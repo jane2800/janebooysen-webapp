@@ -1,0 +1,54 @@
+.HeaderContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px 5px 20px;
+    background-color: var(--background-color);
+}
+
+.AppHeaderContainer {
+  min-height: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Vertically centers the logo and title */
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+}
+
+.AppLogo {
+  height: 10vmin;
+  pointer-events: none;
+  margin: 0 10px 0 10px;
+}
+
+.AppHeader{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px 0 10px 0;
+  font-size: calc(50px + 2vmin);
+  color: rgb(255, 255, 255);
+  font-family: var(--font-main);
+}
+
+.MenuContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.LinkStyle{
+    text-decoration: none;
+    color: white;
+    font-size: calc(10px + 2vmin);
+    font-family: var(--font-main);
+}
+
+.LinkStyle:hover{
+    color: var(--hover-color);
+    transition: color 0.3s ease;
+}
