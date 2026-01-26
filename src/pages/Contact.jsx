@@ -1,12 +1,10 @@
 import "./Contact.module.css";
 
-import Header from "../components/Header";
 import TitleComp from "../components/Title.jsx";
 
 function ContactPage(){
     return(
-        <div className="contact-page">
-            <Header />
+        <div id="contact" className="contact-page">
             <TitleComp text="Contact Me" />
         </div>
     );

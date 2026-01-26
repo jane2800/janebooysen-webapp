@@ -1,24 +1,71 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 import styles from "./Nav.module.css";
 
 export default function Nav() {
-    return(
-        <div className={styles.MenuContainer}>
-            <NavLink to='/home' className={({ isActive }) =>
-            isActive ? styles.active : styles.LinkStyle
-            }>Home</NavLink>
+  const [active, setActive] = useState("cv");
 
-            <NavLink to='/cv' className={({ isActive }) =>
-                isActive ? styles.active : styles.LinkStyle
-            }>CV</NavLink>
+  useEffect(() => {
+    const sections = Array.from(
+      document.querySelectorAll("[data-nav-section]")
+    );
 
-            <NavLink to='/project' className={({ isActive }) =>
-                isActive ? styles.active : styles.LinkStyle
-            }>Project</NavLink>
-            
-            <NavLink to='/contact' className={({ isActive }) =>
-                isActive ? styles.active : styles.LinkStyle
-            }>Contact</NavLink>
-        </div>
-    )
+    const calculateActiveSection = () => {
+      let closestSection = null;
+      let closestDistance = Infinity;
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const distance = Math.abs(
+          rect.top + rect.height / 2 - window.innerHeight / 2
+        );
+
+        console.log(distance, section.id);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSection = section.id;
+        }
+
+        console.log("Closest:", closestSection);
+      });
+
+      if (closestSection) {
+        setActive(closestSection);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      () => {
+        calculateActiveSection();
+      },
+      { threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    // run once on load
+    calculateActiveSection();
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <nav className={styles.MenuContainer}>
+      <a href="#cv" className={active === "cv" ? styles.active : styles.link}>
+        CV
+      </a>
+      <a
+        href="#project"
+        className={active === "project" ? styles.active : styles.link}
+      >
+        Projects
+      </a>
+      <a
+        href="#contact"
+        className={active === "contact" ? styles.active : styles.link}
+      >
+        Contact
+      </a>
+    </nav>
+  );
 }

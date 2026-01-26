@@ -1,13 +1,11 @@
 
 import './Projects.module.css';
 
-import Header from "../components/Header";
 import TitleComp from '../components/Title';
 
 function ProjectPage() {
     return (
-        <div className="ProjectPage">
-            <Header />
+        <div id="project" className="ProjectPage">
             <TitleComp text="My Projects" />
         </div>
     );
