@@ -1,0 +1,19 @@
+.CV-title{
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: var(--accent-color);
+}
+
+.CVPage {
+  width: 100%;
+}
+
+.EducationList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}

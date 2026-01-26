@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import CV from "./pages/cv-page.jsx";
-import HomePage from "./pages/home-page.jsx";
-import ProjectPage from "./pages/project-page.jsx";
-import Contact from "./pages/contact-page.jsx";
+import CV from "./pages/CV.jsx";
+import HomePage from "./pages/Home.jsx";
+import ProjectPage from "./pages/Projects.jsx";
+import Contact from "./pages/Contact.jsx";
 
 function App() {
     return (

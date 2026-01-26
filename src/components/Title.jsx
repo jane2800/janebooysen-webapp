@@ -1,4 +1,4 @@
-import '../css-styles/index.css';
+import './Title.css';
 
 function TitleComp({text}) {
     return (

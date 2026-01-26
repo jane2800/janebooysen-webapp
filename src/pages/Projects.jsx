@@ -1,7 +1,8 @@
 
-import '../css-styles/project-page.css';
+import './Projects.module.css';
+
 import Header from "../components/Header";
-import TitleComp from '../components/title-comp';
+import TitleComp from '../components/Title';
 
 function ProjectPage() {
     return (

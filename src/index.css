@@ -18,7 +18,8 @@ code {
   --accent-color: #AB2849;
   --background-color: #3D0110;
   --hover-color: #EE882F;
-  --font-main: 'Poller One', cursive;
+  --active-color: #FF5733;
+  --font-main: "Germania One", system-ui;
   --font-secondary: 'Arial', sans-serif;
 }
 

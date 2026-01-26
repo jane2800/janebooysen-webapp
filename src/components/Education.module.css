@@ -1,14 +1,16 @@
 
 .Education {
     min-height: fit-content;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     align-items: left;
     justify-content: center;
     padding: 10px 50px 10px 50px;
     background-color: rgb(18, 106, 182);
+    width: 90%;
+    margin: 0 auto;
+    gap: 20px;
 }
-
 .degree {
     font-size: 40px;
     font-weight: bold;
@@ -25,10 +27,9 @@
 }
 
 .spacer p {
-  margin: 0;
-  padding: 0;
+margin: 0;
+padding: 0;
 }
-
 
 .institution {
     font-size: 24px;

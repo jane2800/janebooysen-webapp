@@ -1,6 +1,7 @@
+import "./Contact.module.css";
+
 import Header from "../components/Header";
-import "../css-styles/contact.css";
-import TitleComp from "../components/title-comp.jsx";
+import TitleComp from "../components/Title.jsx";
 
 function ContactPage(){
     return(
