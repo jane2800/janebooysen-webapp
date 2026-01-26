@@ -1,0 +1,64 @@
+
+.Experience {
+    min-height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: left;
+    justify-content: center;
+    padding: 10px 50px 10px 50px;
+    background-color: rgb(18, 106, 182);
+    width: 80%;
+    margin: 0 auto;
+}
+.position {
+    font-size: 40px;
+    font-weight: bold;
+    color: aquamarine;
+    margin: 0 0 0px 0 ;
+}
+
+.spacer{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+}
+
+.spacer p {
+margin: 0;
+padding: 0;
+}
+
+.company {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.year {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: lightgray;
+}
+
+.notes {
+    font-size: 18px;
+    line-height: 1.6;
+    color: white;
+    max-width: 800px;
+    text-align: left;
+
+}
+
+.notes ul {
+    padding-left: 10px;
+}
+
+.notes li {
+    margin-bottom: 10px;
+}
+
+.notesItem {
+    list-style-type: disc;
+}

@@ -1,0 +1,23 @@
+.SkillsPage{
+    display: flex;
+}
+
+.skillsList {
+    list-style-type: square;
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: center;
+    gap: 10px;
+}
+
+.skillItem {
+    font-size: 20px;
+    color: #333;
+    padding: 10px;
+    background-color: aquamarine;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+}
