@@ -40,12 +40,14 @@ const cvData = {
     "HTML & CSS",
     "Python",
     "Figma",
+    "PostgestSQL",
+    "Git & GitHub",
   ],
   
   languages: [
-    "English (Fluent)",
-    "Spanish (Intermediate)",
-    "German (Basic)",
+    {name:"Afrikaans", level: 6},
+    {name:"English", level: 6},
+    {name:"German", level: 3}
   ]
 };
 

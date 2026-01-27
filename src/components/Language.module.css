@@ -1,0 +1,46 @@
+.LanguagePage{
+    padding: 20px;
+}
+
+.languageList {
+    list-style-type: circle;
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    gap: 10px;
+    color: var(--active-color);
+}
+.languageName{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: var(--font-secondary);
+    margin: 10px;
+    text-align: center;
+}
+.languageItem {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    background-color: var(--main-color);
+
+}
+
+.languageIconContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--active--color);
+
+}
+
+.languageIcon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+    color: --active-color;
+}
