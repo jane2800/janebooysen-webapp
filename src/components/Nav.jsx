@@ -51,18 +51,18 @@ export default function Nav() {
 
   return (
     <nav className={styles.MenuContainer}>
-      <a href="#cv" className={active === "cv" ? styles.active : styles.link}>
+      <a href="#cv" className={styles.link}>
         CV
       </a>
       <a
         href="#project"
-        className={active === "project" ? styles.active : styles.link}
+        className={styles.link}
       >
         Projects
       </a>
       <a
         href="#contact"
-        className={active === "contact" ? styles.active : styles.link}
+        className={styles.link}
       >
         Contact
       </a>
