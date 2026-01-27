@@ -1,0 +1,26 @@
+.AboutPage{
+    font-family: var(--font-secondary);
+    color: white;
+    padding: 20px;
+}
+
+.AboutContainer{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.AboutImage img{
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.AboutText{
+    font-family: var(--font-secondary);
+    color: var(--font-color);
+}

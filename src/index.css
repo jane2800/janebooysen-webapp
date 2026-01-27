@@ -14,6 +14,7 @@ code {
 }
 
 :root {
+  --font-color: #FFFFFF;
   --main-color: #680013;
   --accent-color: #AB2849;
   --background-color: #3D0110;
