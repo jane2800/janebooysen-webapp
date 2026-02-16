@@ -7,3 +7,7 @@
     padding: 20px;
     color: var(--accent-color);
 }
+
+main {
+  padding-top: 80px; /* match header height */
+}

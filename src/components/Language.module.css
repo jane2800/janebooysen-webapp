@@ -1,5 +1,5 @@
 .LanguagePage{
-    padding: 20px;
+    padding: 30px 20px;
 }
 
 .languageList {
@@ -27,7 +27,6 @@
     text-align: center;
     justify-content: center;
     background-color: var(--main-color);
-
 }
 
 .languageIconContainer {

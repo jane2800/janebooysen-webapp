@@ -1,0 +1,35 @@
+.device {
+    width: 290px;          /* ← make this smaller */
+    height: 570px; 
+    background: #000;
+    border-radius: 30px;
+    padding: 12px;
+    margin: 0 auto;
+}
+
+.screen {
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden; /* iframe handles scrolling */
+    background: #fff;
+}
+
+
+.notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 120px;
+  height: 24px;
+  background: black;
+  border-radius: 12px;
+}
+
+.iframe {
+    height: 100%;
+    width: 100%;
+    border: none;
+    align-content: center;
+    overflow: hidden;
+}
+

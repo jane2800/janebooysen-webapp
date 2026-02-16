@@ -9,7 +9,7 @@ import ProjectPage from './Projects.jsx';
 
 function HomePage(){
     return(
-        <div className="home-page">
+        <main>
             <Header />
             <Title text="Welcome to My Home Page" />
             <section id="cv" data-nav-section>
@@ -23,6 +23,6 @@ function HomePage(){
             <section id="contact" data-nav-section>  
                 <ContactPage />
             </section>
-        </div>);
+        </main>);
 }
 export default HomePage;

@@ -4,23 +4,40 @@
     padding: 20px;
 }
 
-.AboutContainer{
+.container{
     display: flex;
     width: 80%;
     margin: 0 auto;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
 }
 
-.AboutImage img{
-    width: 10px;
-    height: 10px;
+.image {
+    max-width: 300px;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
-.AboutText{
+.textContainer{
+    margin-left: 40px;
+}
+
+.title{
+    font-size: 40px;
+    color: var(--accent-color);
+    font-family: var(--font-main);
+    margin-bottom: 10px;
+}
+
+.location{
+    font-size: 20px;
+    color: var(--hover-color);
+    margin-bottom: 20px;
+}
+
+.text{
     font-family: var(--font-secondary);
     color: var(--font-color);
+    padding-left: 20px;
+    border-left: 5px solid var(--accent-color);
 }

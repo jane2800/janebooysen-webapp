@@ -1,0 +1,14 @@
+.mac {
+  width: 900px;
+  background: #111;
+  padding: 16px;
+  border-radius: 18px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.35);
+}
+
+.macScreen {
+  background: #fff;
+  border-radius: 10px;
+  min-height: 550px;
+  overflow: hidden;
+}
