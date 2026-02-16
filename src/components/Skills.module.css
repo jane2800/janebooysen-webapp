@@ -1,23 +1,99 @@
-.SkillsPage{
-    display: flex;
+.skillsPage {
+    padding: 30px 0;
 }
 
 .skillsList {
-    list-style-type: square;
-    max-width: 600px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    justify-content: center;
-    gap: 10px;
+  list-style: none;
+  margin: 0 auto;
+  display: grid;
+  max-width: 80%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 50px;
+  justify-content: center;
+}
+
+.skillCard {
+  position: relative;
+  display: flex;
+  height: 70px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color);
+  font-size: 18px;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+.skillCard::before,
+.skillCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+}
+
+.skillCard::before {
+  inset: -200%;
+  background: conic-gradient(
+    var(--main-color),
+    var(--hover-color),
+    var(--main-color) 25%
+  );
+  animation: rotate 3s linear infinite;
+  z-index: 0;
+}
+
+.skillCard::after {
+  inset: 3px;
+  background: var(--main-color);
+  border-radius: 9px;
+  z-index: 1;
 }
 
 .skillItem {
-    font-size: 20px;
-    color: #333;
-    padding: 10px;
-    background-color: aquamarine;
-    border-radius: 10px;
-    text-align: center;
-    justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.animatedBorder,
+.animatedBorderGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.animatedBorderGlow {
+  filter: blur(18px);
+  z-index: 0;
+}
+
+.animatedBorder::before,
+.animatedBorderGlow::before {
+  content: "";
+  position: absolute;
+  inset: -200%;
+  background: conic-gradient(
+    var(--main-color),
+    var(--hover-color),
+    var(--main-color) 25%
+  );
+  animation: rotate 3s linear infinite;
+}
+
+.animatedBorder::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: var(--main-color);
+  border-radius: 9px;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
 }
