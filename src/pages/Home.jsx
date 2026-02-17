@@ -11,7 +11,6 @@ function HomePage(){
     return(
         <main>
             <Header />
-            <Title text="Welcome to My Home Page" />
             <section id="cv" data-nav-section>
                 <CV />
             </section>

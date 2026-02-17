@@ -11,3 +11,13 @@
 main {
   padding-top: 80px; /* match header height */
 }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* navbar height */
+}
+
+.section {
+    min-height: 100vh;
+}
+
