@@ -21,3 +21,14 @@ html {
     min-height: 100vh;
 }
 
+.particle {
+  background-color: GhostWhite;
+  border-radius: 50%;
+  height: 5px;
+  left: 10%;
+  position: absolute;
+  top: 10%;
+  width: 5px;
+  z-index: 99;
+}
+

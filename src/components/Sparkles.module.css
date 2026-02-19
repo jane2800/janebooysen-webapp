@@ -1,0 +1,36 @@
+.sparkleContainer {
+  position: fixed;      /* stays fixed while scrolling */
+  top: 0;
+  left: 0;
+  width: 100vw;         /* full viewport width */
+  height: 100vh;        /* full viewport height */
+  pointer-events: none; /* allows clicks through */
+  z-index: -1;          /* behind everything */
+}
+
+.particle {
+  background-color: GhostWhite;
+  border-radius: 50%;
+  box-shadow: 0 0 var(--blur) var(--spread) rgba(255, 255, 224, 0.5);
+  height: var(--size);
+  left: var(--left);
+  position: absolute;
+  top: var(--top);
+  width: var(--size);
+  z-index: 0;
+
+  animation: sparkle var(--duration) linear var(--delay) infinite;
+
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+
+  transition: left 3s linear, top 3s linear;
+}
+
+
+@keyframes sparkle {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
