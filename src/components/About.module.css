@@ -1,7 +1,13 @@
 .AboutPage{
     font-family: var(--font-secondary);
-    color: white;
+    background-color: var(--card-color);
     padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+    gap: 20px;
+    border: 1px solid rgba(42, 168, 168, 0.2);
+    border-radius: 12px;
+
 }
 
 .container{
@@ -13,20 +19,28 @@
 }
 
 .image {
-    max-width: 300px;
+    height: 300px;
+    object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 20px;
+    flex-shrink: 0;
+    align-self: center;
 }
 
 .textContainer{
     margin-left: 40px;
 }
 
+.titleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .title{
     font-size: 40px;
     color: var(--accent-color);
     font-family: var(--font-main);
-    margin-bottom: 10px;
 }
 
 .location{
@@ -35,8 +49,32 @@
     margin-bottom: 20px;
 }
 
+.openToWork {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--hover-color);
+    border: 1px solid var(--hover-color);
+    padding: 4px 10px;
+    text-transform: uppercase;
+    box-shadow: 0 0 6px rgba(238, 136, 47, 0.4), inset 0 0 6px rgba(238, 136, 47, 0.1);
+}
+
+.blink {
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 .text{
     font-family: var(--font-secondary);
+    font-size: 18px;
     color: var(--font-color);
     padding-left: 20px;
     border-left: 5px solid var(--accent-color);

@@ -6,7 +6,6 @@ import Education from "../components/Education.jsx";
 import cvData from "../data/cv";
 import About from '../components/About.jsx';
 import Experience from '../components/Experience.jsx';
-import Skills from '../components/Skills.jsx';
 import Languages from '../components/Languages.jsx';
 
 function CV() {
@@ -28,11 +27,7 @@ function CV() {
             <Experience key={index} item={item} />
           ))}
         </div>
-        <div className={styles.SkillsSection}>
-          <Title text={"Skills"} />
-          <Skills skills={cvData.skills} />
-        </div>
-        <div className={styles.LanguagesSection}>
+<div className={styles.LanguagesSection}>
           <Title text={"Languages"} />
           <Languages languages={cvData.languages} />
         </div>

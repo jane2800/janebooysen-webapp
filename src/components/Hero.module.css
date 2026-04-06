@@ -1,32 +1,10 @@
-.Home-title{
-    font-size: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    color: var(--accent-color);
-}
-
-main {
-  padding-top: 0;
-}
-
-/* Splash hero */
-.splash {
-    height: 100%;
-    width: 100vw;
-    position: relative;
-}
-
-.stickyContent {
-    position: sticky;
-    top: 0;
+.hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .content {
@@ -58,7 +36,7 @@ main {
     animation: fadeIn 0.4s ease forwards 0.4s;
 }
 
-.heroTitle {
+.title {
     font-family: var(--font-secondary);
     font-size: clamp(16px, 2vw, 22px);
     color: var(--accent-color);
@@ -89,45 +67,23 @@ main {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent-color);
+    text-decoration: none;
     opacity: 0;
     animation: fadeIn 0.4s ease forwards 2.4s;
 }
 
-.line {
+.scrollLine {
     width: 1px;
     height: 40px;
     background: var(--accent-color);
-    animation: pulse 1.5s ease-in-out infinite;
+    animation: scrollPulse 1.5s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
     to { opacity: 1; }
 }
 
-@keyframes pulse {
+@keyframes scrollPulse {
     0%, 100% { opacity: 0.3; transform: scaleY(1); }
     50% { opacity: 1; transform: scaleY(1.2); }
 }
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* navbar height */
-}
-
-.section {
-    min-height: 100vh;
-    padding: 60px 0;
-    border-top: 1px solid rgba(14, 107, 107, 0.2);
-}
-
-.particle {
-  background-color: GhostWhite;
-  border-radius: 50%;
-  height: 5px;
-  left: 10%;
-  position: absolute;
-  top: 10%;
-  width: 5px;
-  z-index: 99;
-}
-

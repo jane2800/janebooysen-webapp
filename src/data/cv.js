@@ -44,6 +44,21 @@ const cvData = {
     "Git & GitHub",
   ],
   
+  projects: [
+    {
+      title: "UCI Redesign",
+      description: "A full redesign of the UCI website with a focus on improved navigation, accessibility, and a cleaner visual hierarchy. Built with HTML, CSS and vanilla JavaScript as part of a UX design course project.",
+      tags: ["HTML", "CSS", "JavaScript", "UX Design"],
+      url: "https://jane2800.github.io/uci-redesign/",
+    },
+    {
+      title: "Project Two",
+      description: "Description of your second project goes here. What problem did it solve? What did you learn? What technologies did you use?",
+      tags: ["React", "Figma"],
+      url: "https://jane2800.github.io/uci-redesign/",
+    },
+  ],
+
   languages: [
     {name:"Afrikaans", level: 6},
     {name:"English", level: 6},

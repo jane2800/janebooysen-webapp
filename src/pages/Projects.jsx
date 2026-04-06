@@ -3,38 +3,45 @@ import { useEffect, useRef, useState } from "react";
 import projectStyles from './Projects.module.css';
 import iphoneStyles from '../components/iphone.module.css';
 import TitleComp from '../components/Title';
-
-const numSteps = 20.0;
+import cvData from '../data/cv';
 
 function ProjectPage() {
   return (
     <div className={projectStyles.projectPage}>
       <TitleComp text="My Projects" />
-
-        <div className={projectStyles.projectContainer}>
-        <FadeInSection>
-            <div className={iphoneStyles.device}>
+      <div className={projectStyles.projectList}>
+        {cvData.projects.map((project, index) => (
+          <FadeInSection key={index}>
+            <div className={`${projectStyles.projectCard} ${index % 2 !== 0 ? projectStyles.reverse : ""}`}>
+              <div className={iphoneStyles.device}>
                 <div className={iphoneStyles.screen}>
-                    <iframe
-                    title="Projects"
-                    src="https://jane2800.github.io/uci-redesign/"
+                  <iframe
+                    title={project.title}
+                    src={project.url}
                     className={iphoneStyles.iframe}
-                    />
+                  />
                 </div>
-            </div>
-        </FadeInSection>
-
-        <FadeInSection>
-            <div className={iphoneStyles.device}>
-                <div className={iphoneStyles.screen}>
-                    <iframe
-                    title="Projects"
-                    src="https://jane2800.github.io/uci-redesign/"
-                    className={iphoneStyles.iframe}
-                    />
+              </div>
+              <div className={projectStyles.projectInfo}>
+                <h2 className={projectStyles.projectTitle}>{project.title}</h2>
+                <div className={projectStyles.tagList}>
+                  {project.tags.map((tag, i) => (
+                    <span key={i} className={projectStyles.tag}>{tag}</span>
+                  ))}
                 </div>
+                <p className={projectStyles.projectDescription}>{project.description}</p>
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={projectStyles.projectLink}
+                >
+                  View Project →
+                </a>
+              </div>
             </div>
-        </FadeInSection>
+          </FadeInSection>
+        ))}
       </div>
     </div>
   );
@@ -45,23 +52,20 @@ function FadeInSection({ children }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.intersectionRatio >= 0.4) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    },
-    {
-      threshold: [0, 0.4, 1],
-    }
-  );
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.intersectionRatio >= 0.4) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      },
+      { threshold: [0, 0.4, 1] }
+    );
 
-  if (ref.current) observer.observe(ref.current);
-
-  return () => observer.disconnect();
-}, []);
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
@@ -76,6 +80,5 @@ function FadeInSection({ children }) {
     </div>
   );
 }
-
 
 export default ProjectPage;

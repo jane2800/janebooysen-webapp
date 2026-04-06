@@ -54,16 +54,10 @@ export default function Nav() {
       <a href="#cv" className={styles.link}>
         CV
       </a>
-      <a
-        href="#project"
-        className={styles.link}
-      >
+      <a href="#project" className={styles.link}>
         Projects
       </a>
-      <a
-        href="#contact"
-        className={styles.link}
-      >
+      <a href="#contact" className={styles.link}>
         Contact
       </a>
     </nav>

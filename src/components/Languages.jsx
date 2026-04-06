@@ -10,7 +10,7 @@ export default function Languages({languages}) {
                         <div className={styles.languageName}>{lang.name}</div>  
                         <div key={index} className={styles.languageIconContainer}>
                             {Array.from({ length: lang.level }, (_, i) => (
-                                <BsStarFill className={styles.languageIcon} key={i} />
+                                <BsStarFill className={`${styles.languageIcon} ${styles.glow}`} key={i} />
                             ))}
                             {Array.from({ length: 6 - lang.level }, (_, i) => (
                                 <BsStar className={styles.languageIcon} key={i} />

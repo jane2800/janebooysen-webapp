@@ -1,6 +1,6 @@
 .device {
-    width: 290px;          /* ← make this smaller */
-    height: 570px; 
+    width: fit-content;          /* ← make this smaller */
+    height: fit-content; 
     background: #000;
     border-radius: 30px;
     padding: 12px;
@@ -8,10 +8,12 @@
 }
 
 .screen {
-    height: 100%;
+    width: 266px;
+    height: 546px;
     border-radius: 20px;
-    overflow: hidden; /* iframe handles scrolling */
+    overflow: hidden;
     background: #fff;
+    position: relative;
 }
 
 
@@ -26,10 +28,13 @@
 }
 
 .iframe {
-    height: 100%;
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    height: 770px;
     border: none;
-    align-content: center;
-    overflow: hidden;
+    transform: scale(0.709);
+    transform-origin: top left;
 }
 
