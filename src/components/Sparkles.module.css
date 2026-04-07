@@ -10,7 +10,7 @@
 
 .particle {
   background-color: GhostWhite;
-  border-radius: 50%;
+  border-radius: 100%;
   box-shadow: 0 0 var(--blur) var(--spread) rgba(255, 255, 224, 0.5);
   height: var(--size);
   left: var(--left);

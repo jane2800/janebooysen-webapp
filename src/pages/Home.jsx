@@ -21,7 +21,6 @@ function HomePage(){
         return () => observer.disconnect();
     }, []);
 
-
     return(
         <main>
             <Sparkles/>

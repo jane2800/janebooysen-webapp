@@ -4,6 +4,11 @@ import CV from "./pages/CV.jsx";
 import HomePage from "./pages/Home.jsx";
 import ProjectPage from "./pages/Projects.jsx";
 import Contact from "./pages/Contact.jsx";
+
+if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'auto';
+}
+
 function App() {
     return (
         <Router>

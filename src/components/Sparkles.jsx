@@ -11,7 +11,7 @@ function Sparkles() {
             left: Math.random() * 100,
             top: Math.random() * 100,
             size: Math.random() * 2 + 1,
-            opacity: Math.random() * 0.3 + 0.05,
+            opacity: Math.random() * 0.5 + 0.07,
             delay: Math.random() * 800 + 200,
             duration: 800,
         }));

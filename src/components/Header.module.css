@@ -1,3 +1,5 @@
+
+
 .HeaderContainer{
     position: fixed;
     top: 0;
@@ -10,11 +12,11 @@
     background-color: var(--background-color);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    margin: 0 auto;
     z-index: 1000;
 }
 
 .AppHeaderContainer {
+  color: var(--background-color);
   min-height: 10px;
   display: flex;
   flex-direction: row;
@@ -24,9 +26,24 @@
 }
 
 .AppLogo {
+  background-image: var(--logo);
+  width: 10vmin;
   height: 10vmin;
-  pointer-events: none;
   margin: 0 10px 0 10px;
+
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 0 0 transparent);
+  image-rendering: crisp-edges;
+
+  background-size: contain;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  pointer-events: none;
+
+
+  display: block;
 }
 
 .AppHeader{
