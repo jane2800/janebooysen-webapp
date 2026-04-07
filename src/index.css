@@ -20,6 +20,7 @@ code {
   --secondary-accent: #1A6B6B;
   --background-color: #3D0110;
   --hover-color: #EE882F;
+  --accent-glow: rgba(238, 136, 47, 0.7);
   --active-color: #F5A55A;
   --font-main: "Germania One", system-ui;
   --font-secondary: 'Crimson Text', Georgia, serif;
@@ -33,6 +34,7 @@ code {
   --secondary-accent: #1A6B6B;
   --background-color: #0D0D1A;
   --hover-color: #7B6EF5;
+  --accent-glow: rgba(123, 110, 245, 0.7);
   --active-color: #A89DF8;
   --card-color: #141430;
 }

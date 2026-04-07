@@ -45,26 +45,3 @@
     cursor: default;
 }
 
-.languageIconContainer:hover .languageIcon {
-    color: var(--hover-color);
-    filter: drop-shadow(0 0 5px var(--hover-color)) brightness(1.4);
-    transform: scale(1.1);
-}
-
-.languageIcon:hover {
-    transform: scale(1.35) rotate(12deg);
-    filter: drop-shadow(0 0 10px var(--hover-color)) brightness(1.8) !important;
-}
-
-.glow {
-  animation: glow 1s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from {
-    filter: drop-shadow(0 0 8px var(--hover-color)) brightness(1.4);
-  }
-  to {
-    filter: drop-shadow(0 0 20px var(--hover-color)) drop-shadow(0 0 30px var(--accent-color)) brightness(2);
-  }
-}

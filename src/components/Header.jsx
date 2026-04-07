@@ -13,8 +13,10 @@ function Header({ visible = true }) {
             className={styles.AppLogo}></img>
         <p className={styles.AppHeader}>Jané Booysen</p>
       </header>
-      <Nav />
-      <ThemeToggle />
+      <div className={styles.navSpacer}>
+        <Nav />
+        <ThemeToggle />
+      </div>
     </div>
   );
 }

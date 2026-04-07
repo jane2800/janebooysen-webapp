@@ -1,20 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ThemeToggle.module.css";
 
 export default function ThemeToggle() {
-    const [theme, setTheme] = useState("crimson");
+        const [currentTheme, setTheme] = useState(() => {
+            const savedTheme = localStorage.getItem("theme");
+            return savedTheme || "crimson";
+    });
+
+    useEffect(() => {  
+        document.documentElement.setAttribute("data-theme", currentTheme);
+        localStorage.setItem("theme", currentTheme);
+    }, [currentTheme]);
 
     const toggle = () => {
-        const next = theme === "crimson" ? "obsidian" : "crimson";
-        setTheme(next);
-        document.documentElement.setAttribute("data-theme", next === "obsidian" ? "obsidian" : "");
-        localStorage.setItem("theme", next);
+        setTheme((prev) => (prev === "crimson" ? "obsidian" : "crimson"));
     };
 
     return (
         <button className={styles.toggle} onClick={toggle}>
             <span className={styles.indicator} />
-            {theme === "crimson" ? "OBSIDIAN" : "CRIMSON"}
+            {currentTheme === "crimson" ? "OBSIDIAN" : "CRIMSON"}
         </button>
     );
 }

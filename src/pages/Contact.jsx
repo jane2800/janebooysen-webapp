@@ -1,7 +1,7 @@
 import contactStyles from "./Contact.module.css";
 import Title from "../components/Title.jsx";
 import { useRef, useState } from "react";
-import { BsLinkedin, BsGithub } from "react-icons/bs";
+import { BsLinkedin, BsGithub, BsFileEarmarkPersonFill } from "react-icons/bs";
 
 function ContactPage(){
 
@@ -73,23 +73,37 @@ function ContactPage(){
         <div className={contactStyles.contactPage}>
             <Title text="Contact Me" />
             <div className={contactStyles.contactInfo}>
-                <div className={contactStyles.navButtonContainer}>
-                    <a
-                    href="https://www.linkedin.com/in/jan%C3%A9-booysen-8a0345215/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={contactStyles.navButton}
-                    >
-                        <BsLinkedin size={20} style={{ marginLeft: "5px" }} /> LinkedIn
-                    </a>
-                    <a
-                    href="https://github.com/jane2800"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={contactStyles.navButton}
-                    >
-                        <BsGithub size={20} style={{ marginLeft: "5px" }} /> GitHub
-                    </a>
+                <div className={contactStyles.textButtonContainer}>
+                    <p className={contactStyles.text}>
+                        I'm always open to new opportunities and collaborations. Whether you have a question, want to work together, or just want to say hi, feel free to reach out!
+                    </p>
+                    <div className={contactStyles.navButtonContainer}>
+                        <a
+                        href="https://www.linkedin.com/in/jan%C3%A9-booysen-8a0345215/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={contactStyles.navButton}
+                        >
+                            <BsLinkedin size={20} style={{ marginLeft: "5px" }} /> LinkedIn
+                        </a>
+                        <a
+                        href="https://github.com/jane2800"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={contactStyles.navButton}
+                        >
+                            <BsGithub size={20} style={{ marginLeft: "5px" }} /> GitHub
+                        </a>
+                        <a
+                        href="Jane-Booysen-CV.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={contactStyles.navButton}
+                        >
+                            <BsFileEarmarkPersonFill size={20} style={{ marginLeft: "5px" }} /> CV
+                        </a> 
+
+                    </div>
                 </div>
                 <form ref={form} onSubmit={sendEmail} className={contactStyles.form} noValidate>
                     <input name="user_email" type="email" className={contactStyles.input} placeholder="Your Email" />

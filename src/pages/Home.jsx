@@ -21,14 +21,6 @@ function HomePage(){
         return () => observer.disconnect();
     }, []);
 
-window.onload = function() {
-    if(window.location.hash) {
-        // Section is already scrolled to by browser
-    } else {
-        // Optional: force default section if no hash
-        window.location.hash = "#myTargetSection";
-    }
-};
 
     return(
         <main>
