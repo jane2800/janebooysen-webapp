@@ -8,6 +8,7 @@ export default function ThemeToggle() {
         const next = theme === "crimson" ? "obsidian" : "crimson";
         setTheme(next);
         document.documentElement.setAttribute("data-theme", next === "obsidian" ? "obsidian" : "");
+        localStorage.setItem("theme", next);
     };
 
     return (
