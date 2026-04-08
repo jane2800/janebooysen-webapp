@@ -25,7 +25,7 @@ code {
   --font-main: "Germania One", system-ui;
   --font-secondary: 'Crimson Text', Georgia, serif;
   --card-color: #4d0116;
-  --logo: url('./img/1.png');
+  --logo: url('./img/crimson.png');
 }
 
 [data-theme="obsidian"] {
@@ -38,7 +38,7 @@ code {
   --accent-glow: rgba(123, 110, 245, 0.7);
   --active-color: #A89DF8;
   --card-color: #141430;
-  --logo: url('./img/2.png');
+  --logo: url('./img/obsidian.png');
 }
 
 .Title{
