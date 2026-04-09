@@ -1,14 +1,14 @@
 const cvData = {
   education: [
     {
-      degree: "BSc Interaction Design",
+      degree: "BSc Software Engineering",
       institution: "University of Europe for Applied Sciences",
       year: "2024 – 2027",
     },
     {
-      degree: "High School Diploma",
-      institution: "Some High School",
-      year: "2019 – 2023",
+      degree: "International Baccalaureate Diploma",
+      institution: "Regent's International School",
+      year: "2021 – 2023",
     },
   ],
 
@@ -37,6 +37,7 @@ const cvData = {
   skills: [
     "JavaScript",
     "React",
+    "Rest APIs",
     "HTML & CSS",
     "Python",
     "Figma",
