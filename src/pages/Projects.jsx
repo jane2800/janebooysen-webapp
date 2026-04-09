@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import projectStyles from './Projects.module.css';
 import iphoneStyles from '../components/iphone.module.css';
+import computerStyles from '../components/computer.module.css';
 import TitleComp from '../components/Title';
 import cvData from '../data/cv';
 
@@ -13,12 +14,12 @@ function ProjectPage() {
         {cvData.projects.map((project, index) => (
           <FadeInSection key={index}>
             <div className={`${projectStyles.projectCard} ${index % 2 !== 0 ? projectStyles.reverse : ""}`}>
-              <div className={iphoneStyles.device}>
-                <div className={iphoneStyles.screen}>
+              <div className={project.device === "phone" ? iphoneStyles.device : computerStyles.device}>
+                <div className={project.device === "phone" ? iphoneStyles.screen : computerStyles.screen}>
                   <iframe
                     title={project.title}
                     src={project.url}
-                    className={iphoneStyles.iframe}
+                    className={project.device === "phone" ? iphoneStyles.iframe : computerStyles.iframe}
                   />
                 </div>
               </div>
