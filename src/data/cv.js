@@ -55,8 +55,8 @@ const cvData = {
     {
       device: "computer",
       title: "Los Navigation",
-      description: "Description of your second project goes here. What problem did it solve? What did you learn? What technologies did you use?",
-      tags: ["React", "Figma"],
+      description: "A modern web application for planning journeys on Berlin's public transport system (BVG). Unlike traditional journey planners, LOS! breaks down your journey into individual legs, allowing you to choose specific departures for each part of your trip.",
+      tags: ["React", "Rest API", "JavaScript", "Node.js", "PostgreSQL"],
       url: "https://los-navigation.vercel.app",
     },
   ],
