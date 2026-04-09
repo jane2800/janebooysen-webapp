@@ -10,7 +10,6 @@
     border-left: 4px solid var(--accent-color);
     width: 80%;
     margin: 0 auto;
-    gap: 20px;
     position: relative;
     z-index: 1;
 }
