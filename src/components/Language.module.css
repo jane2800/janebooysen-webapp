@@ -1,5 +1,7 @@
 .LanguagePage{
     padding: 30px 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .languageList {
@@ -11,6 +13,8 @@
     justify-content: center;
     gap: 10px;
     color: var(--active-color);
+    position: relative; 
+    z-index: 1;
 }
 .languageName{
     font-size: 18px;

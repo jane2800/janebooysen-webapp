@@ -4,6 +4,8 @@
     width: 80%;
     margin: 0 auto;
     flex-direction: column;
+    z-index: 1;
+    position: relative;
 
     padding: 20px;
     background-color: var(--background-color);

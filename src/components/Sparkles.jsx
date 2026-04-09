@@ -5,7 +5,7 @@ function Sparkles() {
     const [particles, setParticles] = useState([]);
 
     useEffect(() => {
-        const count = 25;
+        const count = 30;
 
         const initialParticles = Array.from({ length: count }, () => ({
             left: Math.random() * 100,

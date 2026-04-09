@@ -10,6 +10,8 @@
     border-left: 4px solid var(--accent-color);
     width: 80%;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 .position {
     font-size: 40px;
