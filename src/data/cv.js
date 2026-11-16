@@ -4,23 +4,23 @@
 const cvData = {
   facts: [
     { label: "Studying", text: "BSc Software Engineering, UE Berlin" },
-    { label: "Teaching", text: "Python to kids at ReDI School" },
-    { label: "Brewing", text: "Volunteer barista at For Everyone" },
+    { label: "Building", text: "A new website for Honest & Rare" },
+    { label: "Branding", text: "Al Catzone, a vegan pizzeria in Berlin" },
   ],
 
   ticker: [
     "User-friendly design",
-    "Teaching",
-    "Workshops",
+    "Product thinking",
+    "Brand identity",
     "Figma",
-    "Volunteering",
+    "Fixing messy processes",
     "Great coffee",
   ],
 
   // Newest first.
   experience: [
     {
-      position: "Website Modernisation", // TODO: confirm your exact title
+      position: "Website Modernisation",
       company: "Honest & Rare",
       year: "Oct 2026 – now",
       summary:
@@ -36,12 +36,11 @@ const cvData = {
     {
       position: "Teaching Volunteer",
       company: "ReDI School",
-      year: "Oct 2025 – Jun 2026", // TODO: add end date
+      year: "Oct 2025 – Jun 2026",
       summary:
         "Taught Python to kids aged 10–13 through hands-on activities, turned hard ideas into simple offline explanations, and led planning sessions for the volunteers.",
     },
     {
-      // TODO: still current? It's not on your CV. Add an end date or remove this entry.
       position: "Volunteer Barista",
       company: "For Everyone",
       year: "Sep 2025 – May 2026",
