@@ -1,0 +1,45 @@
+.strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: clamp(48px, 7vw, 72px) 0 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.cell {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 20px;
+}
+
+.cell + .cell {
+    border-left: 1px solid var(--line);
+}
+
+.value {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.35;
+}
+
+@media (max-width: 720px) {
+    .strip {
+        grid-template-columns: 1fr;
+    }
+    .cell {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 12px;
+        padding: 14px 16px;
+    }
+    .cell dt {
+        flex: 0 0 88px;
+    }
+    .cell + .cell {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+    }
+}

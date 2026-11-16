@@ -1,37 +1,37 @@
 .sparkleContainer {
-  position: fixed;      /* stays fixed while scrolling */
-  top: 0;
-  left: 0;
-  width: 100%;         /* full viewport width */
-  height: 100%;        /* full viewport height */
-  pointer-events: none; /* allows clicks through */
-  z-index: 0;
-  pointer-events: none; 
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .particle {
-  background-color: GhostWhite;
-  border-radius: 100%;
-  box-shadow: 0 0 var(--blur) var(--spread) rgba(255, 255, 224, 0.5);
-  height: var(--size);
-  left: var(--left);
-  position: absolute;
-  top: var(--top);
-  width: var(--size);
-  z-index: 0;
-
-  animation: sparkle var(--duration) linear var(--delay) infinite;
-
-  position: absolute;
-  left: var(--left);
-  top: var(--top);
-
-  transition: left 3s linear, top 3s linear;
+    position: absolute;
+    left: var(--left);
+    top: var(--top);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: var(--text);
+    box-shadow: 0 0 calc(var(--size) * 3) calc(var(--size) * 0.5) var(--text);
+    opacity: var(--opacity);
+    animation: twinkle var(--duration) ease-in-out var(--delay) infinite;
 }
 
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: var(--opacity);
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(0.75);
+    }
+}
 
-@keyframes sparkle {
-  0% { opacity: 0; }                                                                                                     
-  100% { opacity: 1; }                                                                                                   
-  150% { opacity: 0; }                                                                                                   
+@media (prefers-reduced-motion: reduce) {
+    .particle {
+        animation: none;
+    }
 }

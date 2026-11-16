@@ -6,21 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Jané Booysen</title>
     <style>
-      html { background-color: #3D0110; }
-      html[data-theme="obsidian"] { background-color: #0D0D1A; }
+      html { background-color: #3a121d; }
+      html[data-theme="noir"] { background-color: #1a0a10; }
     </style>
     <script>
       (function () {
-        const savedTheme = localStorage.getItem("theme");
-
-        if (savedTheme === "obsidian") {
-          document.documentElement.setAttribute("data-theme", "obsidian");
-        } else {
-          document.documentElement.setAttribute("data-theme", "crimson");
-        }
+        var saved = null;
+        try { saved = localStorage.getItem("theme"); } catch (e) {}
+        // "obsidian" was the old dark theme name
+        var theme = saved === "noir" || saved === "obsidian" ? "noir" : "wine";
+        document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
-    <meta name="theme-color" />
+    <meta name="theme-color" content="#3a121d" />
+    <meta name="description" content="Jané Booysen: software engineering student in Berlin who builds friendly digital experiences and finds where processes break down." />
     <meta property="og:title" content="Jané Booysen Portfolio" />
     <meta
       property="og:description"
@@ -35,7 +34,8 @@
     -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Germania+One&family=Poller+One&family=UnifrakturCook:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">    <!--
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Germania+One&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+    <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.

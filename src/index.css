@@ -1,53 +1,264 @@
-body {
-  margin: 0;
-  font-family: 'Crimson Text', Georgia, serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-color);
-  transition: background-color 0.4s ease, color 0.4s ease;
-  background: var(--background-color);
+/* ── Theme tokens ─────────────────────────────────────────── */
+:root,
+[data-theme="wine"] {
+  --bg: #3a121d;
+  --surface: #4a1826;
+  --surface-2: #63001f;
+  --line: #6e2a3d;
+  --text: #f7ebe4;
+  --muted: #e6cdd3;
+  --accent: #e895b1;
+  --action: #f0c9b4;
+  --badge: #8a0047;
+  --field: #2a0c15;
+  --panel-dark: #1f0910;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+[data-theme="noir"] {
+  --bg: #1a0a10;
+  --surface: #261219;
+  --surface-2: #3a1a25;
+  --line: #3f2029;
+  --text: #f7ebe4;
+  --muted: #dccbcf;
+  --accent: #e895b1;
+  --action: #f0c9b4;
+  --badge: #8a0047;
+  --field: #120609;
+  --panel-dark: #10060a;
 }
 
 :root {
-  --font-color: #FFFFFF;
-  --main-color: #680013;
-  --accent-color: #2aa82a;
-  --secondary-accent: #1A6B6B;
-  --background-color: #3D0110;
-  --hover-color: #EE882F;
-  --accent-glow: rgba(238, 136, 47, 0.7);
-  --active-color: #F5A55A;
-  --font-main: "Germania One", system-ui;
-  --font-secondary: 'Crimson Text', Georgia, serif;
-  --card-color: #4d0116;
-  --logo: url('./img/crimson.png');
+  --font-display: "Germania One", Georgia, serif;
+  --font-body: "Crimson Pro", Georgia, serif;
+  --font-label: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --error: #ffb3c1;
+
+  --radius: 24px;
+  --radius-sm: 14px;
+  --max: 1200px;
+  --gutter: clamp(16px, 5vw, 48px);
+  --header-h: 72px;
+
+  color-scheme: dark;
 }
 
-[data-theme="obsidian"] {
-  --font-color: #E8E8F0;
-  --main-color: #1A1A3E;
-  --accent-color: #2AA8A8;
-  --secondary-accent: #1A6B6B;
-  --background-color: #0D0D1A;
-  --hover-color: #7B6EF5;
-  --accent-glow: rgba(123, 110, 245, 0.7);
-  --active-color: #A89DF8;
-  --card-color: #141430;
-  --logo: url('./img/obsidian.png');
+/* ── Base ─────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.Title{
-    font-size: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    color: var(--secondary-accent);
-    font-family: var(--font-main);
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: clip;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--action);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+}
+
+p {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 3px;
+}
+
+/* ── Shared building blocks ───────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: calc(var(--max) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  padding: clamp(64px, 10vw, 120px) 0 0;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.05;
+  color: var(--accent);
+}
+
+.eyebrow {
+  font-family: var(--font-label);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1.5px solid var(--action);
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn--filled {
+  background: var(--action);
+  color: var(--bg);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.btn--outline:hover {
+  border-color: var(--action);
+  color: var(--action);
+}
+
+/* smaller pill buttons (project / contact links) */
+.btn--sm {
+  font-family: var(--font-label);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 18px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tag {
+  font-family: var(--font-label);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+}
+
+.text-link {
+  font-family: var(--font-label);
+  font-size: 15px;
+  color: var(--action);
+  text-underline-offset: 4px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.text-link:hover {
+  color: var(--text);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--action);
+  color: var(--bg);
+  font-family: var(--font-label);
+}
+
+.skip-link:focus {
+  top: 12px;
 }

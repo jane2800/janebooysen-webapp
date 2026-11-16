@@ -1,24 +1,38 @@
 import styles from "./Language.module.css";
-import {BsStar, BsStarFill} from "react-icons/bs";
+import { BsStar, BsStarFill } from "react-icons/bs";
+import cvData from "../data/cv";
 
-export default function Languages({languages}) {
+const MAX = 6;
+
+export default function Languages() {
     return (
-        <div className={styles.LanguagesPage}>
-            <div className={styles.languageList}>
-                {languages.map((lang, index) => (
-                    <div key={index} className={styles.languageItem}>
-                        <div className={styles.languageName}>{lang.name}</div>  
-                        <div key={index} className={styles.languageIconContainer}>
-                            {Array.from({ length: lang.level }, (_, i) => (
-                                <BsStarFill className={`${styles.languageIcon} ${styles.glow}`} key={i} />
-                            ))}
-                            {Array.from({ length: 6 - lang.level }, (_, i) => (
-                                <BsStar className={styles.languageIcon} key={i} />
-                            ))}
-                        </div>  
-                    </div>
-                ))}
+        <section className="section" aria-labelledby="languages-title">
+            <div className="container">
+                <h2 id="languages-title" className="section-title">
+                    I speak…
+                </h2>
+                <ul className={styles.list}>
+                    {cvData.languages.map((lang) => (
+                        <li key={lang.name} className={`card lift ${styles.item}`}>
+                            <div className={styles.head}>
+                                <span className={styles.name}>{lang.name}</span>
+                                <span className={styles.score} aria-hidden="true">
+                                    {lang.level}/{MAX}
+                                </span>
+                            </div>
+                            <div
+                                className={styles.stars}
+                                role="img"
+                                aria-label={`${lang.name}: ${lang.level} out of ${MAX} stars`}
+                            >
+                                {Array.from({ length: MAX }, (_, i) =>
+                                    i < lang.level ? <BsStarFill key={i} /> : <BsStar key={i} />
+                                )}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
             </div>
-        </div>
+        </section>
     );
 }

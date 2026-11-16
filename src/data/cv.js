@@ -1,4 +1,55 @@
+// CV, facts strip, ticker and languages.
+// Projects live in ./projects.js.
+
 const cvData = {
+  facts: [
+    { label: "Studying", text: "BSc Software Engineering, UE Berlin" },
+    { label: "Teaching", text: "Python to kids at ReDI School" },
+    { label: "Brewing", text: "Volunteer barista at For Everyone" },
+  ],
+
+  ticker: [
+    "User-friendly design",
+    "Teaching",
+    "Workshops",
+    "Figma",
+    "Volunteering",
+    "Great coffee",
+  ],
+
+  // Newest first.
+  experience: [
+    {
+      position: "Website Modernisation", // TODO: confirm your exact title
+      company: "Honest & Rare",
+      year: "Oct 2026 – now",
+      summary:
+        "Mapping how customers, vendors and the team move through the platform, improving key journeys like browsing, checkout and vendor processes, and building a Node.js “strangler-fig” migration that replaces the legacy system without disrupting live operations.",
+    },
+    {
+      position: "Hospitality & Brand Development",
+      company: "Al Catzone",
+      year: "May 2026 – now",
+      summary:
+        "Working front-of-house at an independent vegan pizzeria in Berlin while leading its brand identity and digital presence, from visual identity and tone of voice to the website.",
+    },
+    {
+      position: "Teaching Volunteer",
+      company: "ReDI School",
+      year: "Oct 2025 – Jun 2026", // TODO: add end date
+      summary:
+        "Taught Python to kids aged 10–13 through hands-on activities, turned hard ideas into simple offline explanations, and led planning sessions for the volunteers.",
+    },
+    {
+      // TODO: still current? It's not on your CV. Add an end date or remove this entry.
+      position: "Volunteer Barista",
+      company: "For Everyone",
+      year: "Sep 2025 – May 2026",
+      summary:
+        "Drinks, shift juggling and workshop organising. Also: keeping the café running when the coffee machine gave up mid-rush.",
+    },
+  ],
+
   education: [
     {
       degree: "BSc Software Engineering",
@@ -7,33 +58,12 @@ const cvData = {
     },
     {
       degree: "International Baccalaureate Diploma",
-      institution: "Regent's International School",
+      institution: "Regents International School Pattaya",
       year: "2021 – 2023",
     },
   ],
 
-  experience: [
-    {
-      position: "Volunteer Barista",
-      company: "For Everyone",
-      year: "September 2025 - Present",
-      notes: ["Taking orders and making drinks at the café.",
-      "Organising educational workshops, preparing video recordings.",
-      "Coordinating shifts and last-minute changes with fellow volunteers.",
-      "Navigating obstacles, such as when the coffee machine malfunctioned on us a few times during rush hour, keeping calm and solving the problem promptlyto keep the café running."],
-    },
-    {
-      position: "Teaching Volunteer",
-      company: "ReDI School",
-      year: "October 2025 – Present",
-      notes: ["Teaching Python programming to a small group of kids aged 10-13.",
-        "Creating innovative offline ways of presenting complex ideas as simply as possible.",
-        "Developing educational content, tailoring to individual learning gaps.",
-        "Keeping students entertained during class time.",
-        "Leading online planning sessions for the volunteers."],
-      },
-    ],
-
+  // Not shown in the current design; kept for reference.
   skills: [
     "JavaScript",
     "React",
@@ -41,33 +71,29 @@ const cvData = {
     "HTML & CSS",
     "Python",
     "Figma",
-    "PostgestSQL",
+    "Node.js",
+    "Next.js",
+    "PostgreSQL",
     "Git & GitHub",
+    "Claude Code",
+    "Cursor",
   ],
-  
-  projects: [
-    {
-      device: "phone",
-      title: "UCI Redesign",
-      description: "A full redesign of the UCI website with a focus on improved navigation, accessibility, and a cleaner visual hierarchy. Built with HTML, CSS and vanilla JavaScript as part of a UX design course project.",
-      tags: ["HTML", "CSS", "JavaScript", "UX Design"],
-      url: "https://jane2800.github.io/uci-redesign/",
-    },
-    {
-      device: "computer",
-      title: "Los Navigation",
-      description: "A modern web application for planning journeys on Berlin's public transport system (BVG). Unlike traditional journey planners, LOS! breaks down your journey into individual legs, allowing you to choose specific departures for each part of your trip.",
-      tags: ["React", "Rest API", "JavaScript", "Node.js", "PostgreSQL"],
-      url: "https://los-navigation.vercel.app",
-    },
-  ],
+
+  // Not shown in the current design (it has no About section); kept for reference.
+  bio:
+    "Hello! I'm Jané, a third-year Software Engineering student at the University of Europe for Applied Sciences in Berlin. I build with JavaScript, React, Node.js and PostgreSQL, and use AI tools like Claude Code and Cursor in my everyday work. What I enjoy most is the product side: understanding how people actually work, finding where a process breaks down, and deciding what's worth building next. Right now I'm helping modernise Honest & Rare's website, and leading the brand and digital presence of Al Catzone, a vegan pizzeria in Berlin.",
 
   languages: [
-    {name:"Afrikaans", level: 6},
-    {name:"English", level: 6},
-    {name:"German", level: 3}
-  ]
-};
+    { name: "Afrikaans", level: 6 },
+    { name: "English", level: 6 },
+    { name: "German", level: 3 },
+  ],
 
+  links: {
+    linkedin: "https://www.linkedin.com/in/jan%C3%A9-booysen-8a0345215/",
+    github: "https://github.com/jane2800",
+    cv: `${process.env.PUBLIC_URL}/Jane-Booysen-CV.pdf`,
+  },
+};
 
 export default cvData;

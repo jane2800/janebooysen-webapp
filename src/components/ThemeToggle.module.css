@@ -1,32 +1,55 @@
 .toggle {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    font-family: monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: var(--accent-color);
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
     background: transparent;
-    border: 1px solid var(--accent-color);
-    padding: 5px 12px;
+    color: var(--text);
+    font-family: var(--font-label);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.25s ease, transform 0.2s ease;
 }
 
 .toggle:hover {
-    color: var(--hover-color);
-    border-color: var(--hover-color);
-    box-shadow: 0 0 8px rgba(238, 136, 47, 0.3);
+    background: var(--surface);
+    transform: translateY(-1px);
 }
 
-.indicator {
-    width: 7px;
-    height: 7px;
+/* swatch previews the theme you'd switch to */
+.swatch {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background-color: var(--accent-color);
-    transition: background-color 0.3s ease;
+    border: 1.5px solid var(--accent);
 }
 
-.toggle:hover .indicator {
-    background-color: var(--hover-color);
+.swatch[data-swatch="noir"] {
+    background: #1a0a10;
+}
+
+.swatch[data-swatch="wine"] {
+    background: #63001f;
+}
+
+@media (max-width: 720px) {
+    .toggle {
+        padding: 0;
+        width: 44px;
+    }
+    .label {
+        display: none;
+    }
+    .swatch {
+        width: 16px;
+        height: 16px;
+    }
 }

@@ -1,19 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import CV from "./pages/CV.jsx";
 import HomePage from "./pages/Home.jsx";
-import ProjectPage from "./pages/Projects.jsx";
-import Contact from "./pages/Contact.jsx";
 
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/home" element={<HomePage />} />
-                <Route path="/cv" element={<CV />} />
-                <Route path="/project" element={<ProjectPage />} />
-                <Route path="/contact" element={<Contact />} />
+                <Route path="/cv" element={<HomePage section="cv" />} />
+                <Route path="/project" element={<HomePage section="work" />} />
+                <Route path="/contact" element={<HomePage section="contact" />} />
+                <Route path="*" element={<HomePage />} />
             </Routes>
         </Router>
     );

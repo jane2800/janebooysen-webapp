@@ -1,51 +1,45 @@
-.LanguagePage{
-    padding: 30px 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.languageList {
-    list-style-type: circle;
-    max-width: 600px;
-    margin: 0 auto;
+.list {
+    list-style: none;
+    margin: 32px 0 0;
+    padding: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
-    gap: 10px;
-    color: var(--active-color);
-    position: relative; 
-    z-index: 1;
-}
-.languageName{
-    font-size: 18px;
-    font-weight: bold;
-    font-family: var(--font-secondary);
-    margin: 10px;
-    color: var(--font-color);
-    text-align: center;
-}
-.languageItem {
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    justify-content: center;
-    background-color: var(--main-color);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
 }
 
-.languageIconContainer {
+.item {
+    padding: 18px 20px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.languageIcon {
-    width: 40px;
-    height: 40px;
-    margin: 2.5px;
-    color: var(--active-color);
-    transition: transform 0.2s ease, color 0.2s ease;
-    cursor: default;
+.head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 }
 
+.name {
+    font-weight: 600;
+    font-size: 21px;
+}
+
+.score {
+    font-family: var(--font-label);
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.stars {
+    display: flex;
+    gap: 6px;
+    color: var(--action);
+    font-size: 22px;
+}
+
+@media (max-width: 720px) {
+    .list {
+        grid-template-columns: 1fr;
+    }
+}

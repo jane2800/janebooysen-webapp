@@ -1,0 +1,90 @@
+.row {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
+    gap: clamp(28px, 4vw, 48px);
+}
+
+.flipped {
+    grid-template-columns: 2fr 3fr;
+}
+
+.flipped .panel {
+    order: 2;
+}
+
+/* ── Image panel ──────────────────── */
+.panel {
+    height: 480px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.panelDark {
+    background: var(--panel-dark);
+}
+
+.panelAccent {
+    background: var(--accent);
+}
+
+/* ── Text ─────────────────────────── */
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.number {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 7vw, 80px);
+    line-height: 0.8;
+    color: var(--line);
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.05;
+    color: var(--text);
+}
+
+.description {
+    color: var(--muted);
+    max-width: 42ch;
+}
+
+/* ── Text-only variant ────────────── */
+.textOnly {
+    padding: clamp(24px, 4vw, 48px);
+}
+
+.textOnly .description {
+    max-width: 60ch;
+}
+
+@media (max-width: 860px) {
+    .row,
+    .flipped {
+        grid-template-columns: 1fr;
+    }
+    .flipped .panel {
+        order: 0;
+    }
+    .panel {
+        height: auto;
+        min-height: 320px;
+        padding: 28px 20px;
+    }
+}

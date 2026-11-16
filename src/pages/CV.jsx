@@ -1,38 +1,50 @@
-import styles from './CV.module.css';
-
-import Title from "../components/Title.jsx";
-import Education from "../components/Education.jsx";
-
+import styles from "./CV.module.css";
 import cvData from "../data/cv";
-import About from '../components/About.jsx';
-import Experience from '../components/Experience.jsx';
-import Languages from '../components/Languages.jsx';
 
-function CV() {
-  return (
-      
-      <div className={styles.CVPage} >
-        <Title text="About Me" />
-        <About />
-
-        <Title text={"Education"} />
-        <div className={styles.EducationList}>
-          {cvData.education.map((item, index) => (
-              <Education key={index} item={item} />
-          ))}
-        </div>
-        <div className={styles.ExperienceList}>
-          <Title text={"Experience"} />
-          {cvData.experience.map((item, index) => (
-            <Experience key={index} item={item} />
-          ))}
-        </div>
-<div className={styles.LanguagesSection}>
-          <Title text={"Languages"} />
-          <Languages languages={cvData.languages} />
-        </div>
-      </div>
-  );
+function Timeline({ items }) {
+    return (
+        <ol className={styles.timeline}>
+            {items.map((item) => (
+                <li key={item.title} className={styles.entry}>
+                    <span className={styles.dot} aria-hidden="true" />
+                    <p className="eyebrow">{item.date}</p>
+                    <h3 className={styles.title}>{item.title}</h3>
+                    <p className={styles.body}>{item.body}</p>
+                </li>
+            ))}
+        </ol>
+    );
 }
 
-export default CV; 
+function CV() {
+    const experience = cvData.experience.map((e) => ({
+        date: e.year,
+        title: `${e.position} · ${e.company}`,
+        body: e.summary,
+    }));
+    const education = cvData.education.map((e) => ({
+        date: e.year,
+        title: e.degree,
+        body: e.institution,
+    }));
+
+    return (
+        <section id="cv" className="section" aria-label="CV">
+            <div className={`container ${styles.grid}`}>
+                <div>
+                    <h2 className="section-title">Experience</h2>
+                    <Timeline items={experience} />
+                </div>
+                <div>
+                    <h2 className="section-title">Education</h2>
+                    <Timeline items={education} />
+                    <a className="text-link" href={cvData.links.cv} download>
+                        Download full CV (PDF)&nbsp;<span aria-hidden="true">↓</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+export default CV;

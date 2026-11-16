@@ -1,68 +1,48 @@
-
-
-.HeaderContainer{
-    position: fixed;
+.header {
+    position: sticky;
     top: 0;
-    width:  95%;
+    z-index: 100;
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    transition: background-color 0.4s ease;
+}
+
+.inner {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 20px 5px 20px;
-    background-color: var(--background-color);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 1000;
+    gap: 16px;
+    height: var(--header-h);
 }
 
-.AppHeaderContainer {
-  color: var(--background-color);
-  min-height: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center; 
-  justify-content: left;
-  font-size: calc(10px + 2vmin);
-}
-
-.AppLogo {
-  background-image: var(--logo);
-  width: 10vmin;
-  height: 10vmin;
-  margin: 0 10px 0 10px;
-
-  mix-blend-mode: normal;
-  filter: drop-shadow(0 0 0 transparent);
-  image-rendering: crisp-edges;
-
-  background-size: contain;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  pointer-events: none;
-
-
-  display: block;
-}
-
-.AppHeader{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin: 10px 0 10px 0;
-  font-size: calc(50px + 2vmin);
-  color: rgb(255, 255, 255);
-  font-family: var(--font-main);
-}
-
-.navSpacer {
-    display: flex;
-    flex-direction: row;
+.brand {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    gap: 10px;
+    min-height: 44px;
+    color: var(--text);
+    text-decoration: none;
 }
 
+.name {
+    font-family: var(--font-display);
+    font-size: 24px;
+    line-height: 1;
+}
 
+.right {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 2vw, 24px);
+}
+
+@media (max-width: 720px) {
+    .header {
+        --header-h: 64px;
+    }
+    .name {
+        font-size: 21px;
+    }
+}

@@ -1,51 +1,39 @@
-/* Monitor bezel */
-.device {
-    width: fit-content;
-    height: fit-content;
-    background: #1a1a1a;
+/* Simple browser frame. The screenshot keeps its own aspect ratio, never cropped. */
+.window {
+    width: 100%;
+    max-width: 600px;
+    background: #f4ece6;
     border-radius: 12px;
-    padding: 14px 14px 10px 14px;
-    margin: 0 auto;
-    box-shadow: 0 0 0 2px #333, 0 8px 32px rgba(0,0,0,0.5);
-    align-self: center;
-}
-
-/* Screen area */
-.screen {
-    width: 560px;
-    height: 350px;
-    border-radius: 4px;
     overflow: hidden;
-    background: #fff;
-    position: relative;
+    box-shadow: 0 24px 50px rgba(58, 18, 29, 0.35);
 }
 
-/* Scaled iframe — renders at 1280×800, scaled down to fit */
-.iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1280px;
-    height: 800px;
-    border: none;
-    transform: scale(0.4375);
-    transform-origin: top left;
+.bar {
+    display: flex;
+    gap: 6px;
+    padding: 10px 12px;
+    background: #e8ddd5;
 }
 
-/* Neck */
-.stand {
-    width: 80px;
-    height: 24px;
-    background: #222;
-    margin: 0 auto;
-}
-
-/* Base */
-.base {
-    width: 160px;
+.bar span {
+    width: 10px;
     height: 10px;
-    background: #1a1a1a;
-    border-radius: 0 0 8px 8px;
-    margin: 0 auto;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    border-radius: 50%;
+    background: #c9b6ad;
+}
+
+.bar span:nth-child(1) {
+    background: #e0645c;
+}
+.bar span:nth-child(2) {
+    background: #e2b04a;
+}
+.bar span:nth-child(3) {
+    background: #d79bb0;
+}
+
+.screen {
+    display: block;
+    width: 100%;
+    height: auto;
 }
