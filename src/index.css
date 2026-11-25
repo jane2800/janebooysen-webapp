@@ -1,31 +1,21 @@
-/* ── Theme tokens ─────────────────────────────────────────── */
-:root,
-[data-theme="wine"] {
-  --bg: #3a121d;
-  --surface: #4a1826;
-  --surface-2: #63001f;
-  --line: #6e2a3d;
-  --text: #f7ebe4;
-  --muted: #e6cdd3;
-  --accent: #e895b1;
-  --action: #f0c9b4;
-  --badge: #8a0047;
-  --field: #2a0c15;
-  --panel-dark: #1f0910;
-}
-
-[data-theme="noir"] {
-  --bg: #1a0a10;
-  --surface: #261219;
-  --surface-2: #3a1a25;
-  --line: #3f2029;
-  --text: #f7ebe4;
-  --muted: #dccbcf;
-  --accent: #e895b1;
-  --action: #f0c9b4;
-  --badge: #8a0047;
-  --field: #120609;
-  --panel-dark: #10060a;
+/* ── Colour tokens ────────────────────────────────────────── */
+/* One theme: deep wine base, cream text, two soft accents.
+   Rose marks headings and labels; mauve marks anything clickable;
+   raspberry is reserved for the JB badge. */
+:root {
+  --bg: #33101f;          /* deep wine */
+  --surface: #45162a;     /* wine: cards and panels */
+  --surface-2: #5e1f3a;   /* soft wine: tags, progress bars */
+  --line: #632a42;
+  --text: #f8ecee;        /* warm cream */
+  --muted: #e3c6cf;       /* blush */
+  --accent: #eda4ba;      /* dusty rose: headings, labels, ticker */
+  --on-accent: #33101f;
+  --action: #dcaad6;      /* mauve: links and buttons only */
+  --badge: #9b1f4a;       /* raspberry: JB badge only */
+  --badge-text: #f8ecee;
+  --field: #280c18;
+  --panel-dark: #220a14;
 }
 
 :root {

@@ -1,7 +1,6 @@
 import styles from "./Header.module.css";
 import Badge from "./Badge";
 import Nav from "./Nav";
-import ThemeToggle from "./ThemeToggle";
 
 function Header() {
     return (
@@ -13,7 +12,6 @@ function Header() {
                 </a>
                 <div className={styles.right}>
                     <Nav />
-                    <ThemeToggle />
                 </div>
             </div>
         </header>

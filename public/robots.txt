@@ -1,5 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /christmas/
 
-Sitemap: https://janebooysen.netlify.app/sitemap.xml
+Sitemap: https://janebooysen.vercel.app/sitemap.xml

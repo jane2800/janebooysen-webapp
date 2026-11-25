@@ -11,3 +11,14 @@
     font-size: 14px;
     color: var(--muted);
 }
+
+.link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.link:hover,
+.link:focus-visible {
+    color: var(--text);
+}

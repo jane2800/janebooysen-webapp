@@ -5,8 +5,11 @@ function Footer() {
         <footer className={`container ${styles.footer}`}>
             <p>&copy; {new Date().getFullYear()} Jané Booysen</p>
             <p>
-                Hover my name. Flip the theme. <span aria-hidden="true">✦</span>
+                Hover my name. <span aria-hidden="true">✦</span>
             </p>
+            <a className={styles.link} href="/christmas/">
+                Christmas
+            </a>
         </footer>
     );
 }

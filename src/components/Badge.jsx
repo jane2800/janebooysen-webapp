@@ -1,4 +1,4 @@
-// "JB" monogram on a scalloped rosette. Fill follows --badge, letters --text.
+// "JB" monogram on a scalloped rosette. Fill follows --badge, letters --badge-text.
 
 const POINTS = 12;
 const OUTER = 23;
@@ -27,7 +27,7 @@ export default function Badge({ size = 40 }) {
                 dominantBaseline="middle"
                 fontFamily="Germania One, Georgia, serif"
                 fontSize="19"
-                fill="var(--text)"
+                fill="var(--badge-text)"
             >
                 JB
             </text>

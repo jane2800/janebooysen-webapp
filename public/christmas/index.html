@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Christmas</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/logo.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E6D2B8; --ink:#3B2A20; --muted:#7A5E4A;
+  --glow:rgba(255,214,150,.75); --vignette:rgba(110,62,28,.32); --mote:rgba(255,250,232,.95);
+  --chip-bg:#F6EBDD; --chip-line:#D6BFA2; --chip-on:#3B2A20; --chip-on-ink:#F6EBDD;
+  --lid:#B3202E; --lid-shade:#871722; --ribbon:#6A0F18; --bow:#E6C15C; --bow-line:#8A6A1E;
+  --floor:#6A0F17; --wall-top:#520B11; --wall-side:#7A121B; --wall-bottom:#931823; --rim:#3A070B;
+  --tissue:#F5E8D6; --tissue-2:#EEDBC4; --tissue-line:#CDAE8C;
+  --tag:#6B4A35;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .15 0 0 0 0 .05 0 0 0 .14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1F1612; --ink:#F1E4D4; --muted:#B59E88;
+    --glow:rgba(255,160,80,.2); --vignette:rgba(0,0,0,.6); --mote:rgba(255,200,130,.6);
+    --chip-bg:#2C211B; --chip-line:#4A382D; --chip-on:#F1E4D4; --chip-on-ink:#1F1612;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1F1612; --ink:#F1E4D4; --muted:#B59E88;
+  --glow:rgba(255,160,80,.2); --vignette:rgba(0,0,0,.6); --mote:rgba(255,200,130,.6);
+  --chip-bg:#2C211B; --chip-line:#4A382D; --chip-on:#F1E4D4; --chip-on-ink:#1F1612;
+  color-scheme: dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0; height:100%; overflow:hidden;
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(ellipse 55% 48% at 50% 42%, var(--glow), transparent 72%),
+    radial-gradient(ellipse at center, transparent 45%, var(--vignette) 100%),
+    var(--grain);
+  background-size:100% 100%, 100% 100%, 180px 180px;
+  color:var(--ink);
+  font-family:"Patrick Hand","Comic Neue","Segoe Print","Bradley Hand",system-ui,sans-serif;
+  -webkit-tap-highlight-color:transparent;
+}
+.stage{
+  position:relative; z-index:1; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:1.4rem; padding:1rem;
+}
+.box{
+  --s:min(80vw, 56vh, 420px);
+  position:relative; width:var(--s); height:var(--s);
+  filter:drop-shadow(0 26px 30px rgba(60,25,8,.38));
+  user-select:none; -webkit-user-select:none;
+}
+.box.open{touch-action:none; cursor:grab}
+.item.held{z-index:5}
+.item.held .art{filter:drop-shadow(0 14px 8px rgba(0,0,0,.45))}
+.interior{position:absolute; inset:0; width:100%; height:100%}
+.interior .floor-fill{fill:var(--floor)}
+.interior .w-top{fill:var(--wall-top)}
+.interior .w-side{fill:var(--wall-side)}
+.interior .w-bottom{fill:var(--wall-bottom)}
+.interior .edge{fill:none; stroke:var(--rim); stroke-width:1.6; stroke-linejoin:round}
+.interior .crease{stroke:var(--rim); stroke-width:.8; opacity:.7}
+.tissue polygon{stroke:var(--tissue-line); stroke-width:.4; stroke-linejoin:round}
+.tissue .t1{fill:var(--tissue)}
+.tissue .t2{fill:var(--tissue-2)}
+.tissue .t-crease{fill:none; stroke:var(--tissue-line); stroke-width:.45; opacity:.7}
+
+.floor{position:absolute; inset:14%; pointer-events:none}
+.item{
+  position:absolute; left:0; top:0; width:var(--size); height:var(--size);
+  margin-left:calc(var(--size) / -2); margin-top:calc(var(--size) / -2);
+  will-change:transform;
+}
+.item .inner{width:100%; height:100%; display:grid; place-items:center; position:relative}
+.item .art{
+  font-size:calc(var(--size) * .72); line-height:1;
+  filter:drop-shadow(0 3px 3px rgba(70,40,20,.35));
+  display:grid; place-items:center;
+}
+.item .art svg{width:calc(var(--size) * .62); height:auto; display:block}
+/* drawings: fit inside the same footprint the emoji used; --art-scale tweaks one item */
+.item .art img{
+  width:calc(var(--size) * .8 * var(--art-scale, 1));
+  height:calc(var(--size) * .8 * var(--art-scale, 1));
+  object-fit:contain; display:block;
+  pointer-events:none; -webkit-user-drag:none; user-select:none;
+}
+.item .duo{font-size:.66em; letter-spacing:-.1em; white-space:nowrap}
+.item .quad{display:grid; grid-template-columns:1fr 1fr; font-size:.46em; line-height:1.05}
+.item .tag{
+  position:absolute; top:88%; left:50%; transform:translateX(-50%);
+  font-size:clamp(10px, calc(var(--size) * .26), 13px); white-space:nowrap;
+  color:var(--tag); opacity:.85;
+}
+.item.gone .inner{animation:pop .45s ease-in forwards}
+@keyframes pop{
+  0%{transform:scale(1); opacity:1}
+  40%{transform:scale(1.35) translateY(-10%); opacity:1}
+  100%{transform:scale(.4) translateY(-120%); opacity:0}
+}
+
+.lid{
+  position:absolute; inset:-2%; width:104%; height:104%;
+  padding:0; border:0; background:none; cursor:pointer;
+  transform-origin:50% 50%;
+}
+.lid svg{width:100%; height:100%; display:block}
+.lid::after{content:""; position:absolute; inset:1%; background-image:var(--grain); background-size:110px 110px; mix-blend-mode:multiply; opacity:.9; pointer-events:none}
+.lid:focus-visible{outline:3px solid var(--ink); outline-offset:6px; border-radius:4px}
+.box.closed .lid:hover{transform:translateY(-1.5%) rotate(-1deg); transition:transform .2s}
+.box.open .lid{pointer-events:none; animation:lift 1.4s cubic-bezier(.45,0,.3,1) 1.05s forwards}
+.lid .loop, .lid .knot, .lid .rib{transform-box:fill-box; transform-origin:center}
+.lid .rib-v{transform-origin:50% 0}
+.lid .rib-h{transform-origin:0 50%}
+.box.open .loop{animation:untie .8s cubic-bezier(.5,0,.7,.4) forwards}
+.box.open .loop:nth-child(2){animation-delay:.07s}
+.box.open .loop:nth-child(3){animation-delay:.14s}
+.box.open .loop:nth-child(4){animation-delay:.2s}
+.box.open .knot{animation:knot .7s ease-in .2s forwards}
+.box.open .rib-v{animation:slipV .5s ease-in .55s forwards}
+.box.open .rib-h{animation:slipH .5s ease-in .62s forwards}
+@keyframes untie{
+  0%{transform:none; opacity:1}
+  30%{transform:scale(1.12) rotate(calc(var(--r) * -.15)); opacity:1}
+  100%{transform:translate(var(--tx),var(--ty)) rotate(var(--r)) scale(.55); opacity:0}
+}
+@keyframes knot{40%{transform:scale(1.15)} 100%{transform:scale(.2); opacity:0}}
+@keyframes slipV{to{transform:scaleY(0)}}
+@keyframes slipH{to{transform:scaleX(0)}}
+.box.closing .lid{animation:land .9s cubic-bezier(.3,.6,.4,1) forwards}
+.motes{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden}
+.mote{position:absolute; width:var(--d); height:var(--d); border-radius:50%; background:var(--mote); opacity:0; animation:drift var(--t) linear infinite; animation-delay:var(--delay)}
+@keyframes drift{0%{transform:translate(0,0); opacity:0} 15%{opacity:.85} 85%{opacity:.6} 100%{transform:translate(var(--dx),-30vh); opacity:0}}
+@keyframes lift{
+  0%{transform:none; filter:drop-shadow(0 0 0 rgba(0,0,0,0))}
+  40%{transform:translateY(-6%) scale(1.12) rotate(-3deg); filter:drop-shadow(0 26px 18px rgba(0,0,0,.3)); opacity:1}
+  100%{transform:translate(-60%,-125%) scale(1.15) rotate(-24deg); filter:drop-shadow(0 40px 24px rgba(0,0,0,.15)); opacity:0}
+}
+@keyframes land{
+  0%{transform:translateY(-30%) scale(1.15) rotate(-6deg); opacity:0}
+  60%{transform:translateY(0) scale(.98) rotate(1deg); opacity:1}
+  100%{transform:none; opacity:1}
+}
+
+.hint{margin:0; font-size:1.35rem; color:var(--muted); text-align:center; min-height:1.6em}
+.controls{display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; align-items:center}
+.controls[hidden]{display:none}
+.modes{display:flex; background:var(--chip-bg); border:1.5px solid var(--chip-line); border-radius:999px; padding:3px}
+.modes button, .rewrap{
+  font:inherit; font-size:1.1rem; color:var(--ink); background:none; border:0;
+  padding:.35rem .95rem; border-radius:999px; cursor:pointer;
+}
+.modes button[aria-checked="true"]{background:var(--chip-on); color:var(--chip-on-ink)}
+.rewrap{border:1.5px solid var(--lid); color:var(--lid)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .rewrap{color:#FF8A8E; border-color:#FF8A8E} }
+:root[data-theme="dark"] .rewrap{color:#FF8A8E; border-color:#FF8A8E}
+.modes button:focus-visible, .rewrap:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
+
+.sky{position:fixed; inset:0; pointer-events:none; z-index:20; overflow:hidden}
+.bug{position:absolute; left:0; top:0; font-size:clamp(28px, 8vw, 42px); line-height:1; will-change:transform}
+.bug span{display:inline-block; filter:drop-shadow(0 6px 4px rgba(0,0,0,.25))}
+/* drawn bugs take the same 1em box as the emoji */
+.bug img{width:calc(1.1em * var(--art-scale, 1)); height:calc(1.1em * var(--art-scale, 1)); object-fit:contain; display:block}
+.bug.butterfly span{animation:flap .16s infinite alternate ease-in-out}
+.bug.bee span{animation:buzz .07s infinite alternate}
+.bug.worm span{animation:wiggle .28s infinite alternate ease-in-out}
+@keyframes flap{to{transform:scaleX(.3)}}
+@keyframes buzz{to{transform:translate(1px,-1.5px)}}
+@keyframes wiggle{from{transform:rotate(-14deg) scaleY(.9)} to{transform:rotate(14deg) scaleY(1.08)}}
+
+@media (prefers-reduced-motion: reduce){
+  .box.open .lid{animation:fade .3s forwards}
+  .box.closing .lid{animation:none}
+  .motes{display:none}
+  .box.open .loop, .box.open .knot, .box.open .rib{animation:none}
+  @keyframes fade{to{opacity:0}}
+}
+</style>
+</head>
+<body>
+<main class="stage">
+  <div class="box closed" id="box">
+    <svg class="interior" viewBox="0 0 100 100" aria-hidden="true">
+      <rect class="floor-fill" x="0" y="0" width="100" height="100"/>
+      <polygon class="w-top" points="0,0 100,0 86,14 14,14"/>
+      <polygon class="w-side" points="0,0 14,14 14,86 0,100"/>
+      <polygon class="w-side" points="100,0 100,100 86,86 86,14"/>
+      <polygon class="w-bottom" points="0,100 14,86 86,86 100,100"/>
+      <line class="crease" x1="0" y1="0" x2="14" y2="14"/>
+      <line class="crease" x1="100" y1="0" x2="86" y2="14"/>
+      <line class="crease" x1="0" y1="100" x2="14" y2="86"/>
+      <line class="crease" x1="100" y1="100" x2="86" y2="86"/>
+      <rect class="edge" x="14" y="14" width="72" height="72"/>
+      <g class="tissue">
+        <polygon class="t1" points="9,20 50,9 62,34 47,91 11,84"/>
+        <polygon class="t2" points="38,11 91,17 89,60 72,92 34,78"/>
+        <polygon class="t1" points="15,55 58,46 92,87 28,93"/>
+        <path class="t-crease" d="M20 30 L44 70 M60 22 L80 55 M30 80 L70 68 M52 40 L66 62 M18 62 L36 58"/>
+      </g>
+      <rect class="edge" x=".8" y=".8" width="98.4" height="98.4"/>
+    </svg>
+    <div class="floor" id="floor"></div>
+    <button class="lid" id="lid" aria-label="Open the gift">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="lidShade" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="var(--lid)"/>
+            <stop offset="1" stop-color="var(--lid-shade)"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="98" height="98" rx="1.5" fill="url(#lidShade)"/>
+        <rect x="1" y="1" width="98" height="98" rx="1.5" fill="none" stroke="var(--rim)" stroke-opacity=".35" stroke-width="1"/>
+        <rect class="rib rib-v" x="44" y="1" width="12" height="98" fill="var(--ribbon)" opacity=".85"/>
+        <rect class="rib rib-h" x="1" y="44" width="98" height="12" fill="var(--ribbon)" opacity=".85"/>
+        <g class="bow" fill="var(--bow)" stroke="var(--bow-line)" stroke-width="1.4">
+          <g class="loop" style="--tx:-14px;--ty:-6px;--r:-50deg"><ellipse cx="41" cy="41" rx="10" ry="6.5" transform="rotate(45 41 41)"/></g>
+          <g class="loop" style="--tx:14px;--ty:-4px;--r:50deg"><ellipse cx="59" cy="41" rx="10" ry="6.5" transform="rotate(-45 59 41)"/></g>
+          <g class="loop" style="--tx:-12px;--ty:22px;--r:40deg"><ellipse cx="41" cy="59" rx="10" ry="6.5" transform="rotate(-45 41 59)"/></g>
+          <g class="loop" style="--tx:12px;--ty:24px;--r:-40deg"><ellipse cx="59" cy="59" rx="10" ry="6.5" transform="rotate(45 59 59)"/></g>
+          <g class="knot">
+            <rect x="44.5" y="44.5" width="11" height="11" rx="1.5"/>
+            <rect x="47.8" y="47.8" width="4.4" height="4.4" fill="var(--ribbon)" stroke="none"/>
+          </g>
+        </g>
+      </svg>
+    </button>
+  </div>
+  <p class="hint" id="hint" aria-live="polite">Tap the box to open it</p>
+  <div class="controls" id="controls" hidden>
+    <div class="modes" role="radiogroup" aria-label="How the gifts react">
+      <button role="radio" aria-checked="true" data-mode="move">Move them</button>
+      <button role="radio" aria-checked="false" data-mode="pick">Take them out</button>
+    </div>
+    <button class="rewrap" id="rewrap">Wrap it again</button>
+  </div>
+</main>
+<div class="motes" id="motes" aria-hidden="true"></div>
+<div class="sky" id="sky" aria-hidden="true"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const box = $('#box'), lid = $('#lid'), floor = $('#floor'), sky = $('#sky'),
+      hint = $('#hint'), controls = $('#controls'), rewrap = $('#rewrap');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const rand = (a, b) => a + Math.random() * (b - a);
+
+const LIGHTHOUSE = `<svg viewBox="0 0 24 32"><path d="M8 10h8l2 20H6z" fill="#fff" stroke="#333" stroke-width=".8"/><path d="M7.4 16h9.2l.5 5H6.9z" fill="#d22"/><path d="M6.4 26h11.2l.4 4H6z" fill="#d22"/><rect x="8.5" y="5" width="7" height="5" fill="#ffe066" stroke="#333" stroke-width=".8"/><path d="M7.5 5 12 1l4.5 4z" fill="#d22" stroke="#333" stroke-width=".8"/></svg>`;
+
+/*
+  Drawings: put image files in public/christmas/art/.
+  - src:   path to your PNG or SVG. Transparent backgrounds look best.
+  - art:   emoji/SVG fallback, shown if src is missing or the file can't be loaded.
+  - scale: optional size tweak for one drawing (1 = default, 1.2 = 20% bigger).
+*/
+const ITEMS = [
+  { name: 'horses',           src: '/christmas/art/horses.png',           art: '🐎' },
+  { name: 'lighthouse',       src: '/christmas/art/lighthouse.png',       art: LIGHTHOUSE },
+  { name: 'sticks',           src: '/christmas/art/sticks.png',           art: '🪵' },
+  { name: 'seasons',          src: '/christmas/art/seasons.png',          art: '<span class="quad"><span>🌸</span><span>☀️</span><span>🍂</span><span>❄️</span></span>' },
+  { name: 'American cars',    src: '/christmas/art/american-cars.png',    art: '🚗' },
+  { name: 'Halloween planet', src: '/christmas/art/halloween-planet.png', art: '🎃' },
+  { name: 'orange juice',     src: '/christmas/art/orange-juice.png',     art: '🧃' },
+  { name: 'doors',            src: '/christmas/art/doors.png',            art: '🚪' },
+  { name: 'planet + man',     src: '/christmas/art/planet-man.png',       art: '<span class="duo">🪐🧍</span>' },
+  { name: 'Vermont trees',    src: '/christmas/art/vermont-trees.png',    art: '<span class="duo">🌲🍁</span>' },
+];
+// kind picks the motion (lady, worm, bee, butterfly); count is how many fly out
+const BUG_TYPES = [
+  { kind: 'lady',      src: '/christmas/art/ladybug.png',   art: '🐞', count: 3 },
+  { kind: 'worm',      src: '/christmas/art/worm.png',      art: '🪱', count: 2 },
+  { kind: 'bee',       src: '/christmas/art/bee.png',       art: '🐝', count: 2 },
+  { kind: 'butterfly', src: '/christmas/art/butterfly.png', art: '🦋', count: 2 },
+];
+const BUGS = BUG_TYPES.flatMap(t => Array(t.count).fill(t));
+
+// Load each image once up front so nothing pops in late. A file that fails falls back to `art`.
+const loaded = new Map();
+function preload(def){
+  if (!def.src || loaded.has(def.src)) return;
+  const img = new Image();
+  const p = new Promise(res => { img.onload = () => res(true); img.onerror = () => res(false); });
+  img.src = def.src;
+  loaded.set(def.src, p);
+  p.then(ok => loaded.set(def.src, ok));
+}
+[...ITEMS, ...BUG_TYPES].forEach(preload);
+
+// Fills `wrap` with the drawing, or the fallback if there's no file or it failed to load
+function putArt(wrap, def){
+  const showFallback = () => { wrap.innerHTML = def.art || ''; };
+  if (!def.src || loaded.get(def.src) === false) return showFallback();
+  const img = document.createElement('img');
+  img.src = def.src; img.alt = ''; img.draggable = false;
+  if (def.scale) img.style.setProperty('--art-scale', def.scale);
+  img.onerror = showFallback;
+  wrap.replaceChildren(img);
+}
+
+const state = { open:false, mode:'move', held:null, items:[], W:0, H:0, pointer:null, pressing:false };
+let bugs = [];
+
+function measure(){
+  const r = floor.getBoundingClientRect();
+  const oW = state.W, oH = state.H;
+  state.W = r.width; state.H = r.height;
+  const size = r.width * 0.17;
+  floor.style.setProperty('--size', size + 'px');
+  state.items.forEach(it => {
+    if (oW) { it.x *= state.W / oW; it.y *= state.H / oH; }
+    it.r = size * 0.5;
+  });
+}
+
+function fill(){
+  floor.innerHTML = '';
+  state.items = [];
+  measure();
+  const cols = 4, rows = 3;
+  const slots = [];
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) slots.push([c, r]);
+  slots.sort(() => Math.random() - .5);
+  const size = state.W * 0.17;
+  ITEMS.forEach((def, i) => {
+    const [c, r] = slots[i];
+    const el = document.createElement('div');
+    el.className = 'item';
+    el.innerHTML = `<div class="inner"><div class="art"></div><div class="tag"></div></div>`;
+    putArt(el.querySelector('.art'), def);
+    el.querySelector('.tag').textContent = def.name;
+    floor.append(el);
+    state.items.push({
+      el, r: size * 0.5,
+      x: (c + .5) / cols * state.W + rand(-.04, .04) * state.W,
+      y: (r + .5) / rows * state.H + rand(-.04, .04) * state.H,
+      vx: 0, vy: 0, rot: rand(-25, 25)
+    });
+  });
+}
+
+function tick(){
+  const its = state.items, W = state.W, H = state.H;
+  const held = state.held;
+  // keep items from overlapping
+  for (let i = 0; i < its.length; i++) for (let j = i + 1; j < its.length; j++) {
+    const a = its[i], b = its[j];
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const d = Math.hypot(dx, dy) || .01, min = (a.r + b.r) * .92;
+    if (d < min) {
+      const nx = dx / d, ny = dy / d, gap = min - d;
+      const ka = a === held ? 0 : b === held ? 1 : .5, kb = 1 - ka;
+      a.x -= nx * gap * ka; a.y -= ny * gap * ka; b.x += nx * gap * kb; b.y += ny * gap * kb;
+      const avx = a.vx, avy = a.vy;
+      a.vx = a.vx * .6 + b.vx * .4; a.vy = a.vy * .6 + b.vy * .4;
+      b.vx = b.vx * .6 + avx * .4; b.vy = b.vy * .6 + avy * .4;
+    }
+  }
+  for (const it of its) {
+    if (it === held) {
+      it.vx = (it.tx - it.x) * .22; it.vy = (it.ty - it.y) * .22;
+      it.x += it.vx; it.y += it.vy;
+    } else {
+      it.x += it.vx; it.y += it.vy;
+      it.vx *= .88; it.vy *= .88;
+      it.rot += it.vx * .7;
+    }
+    if (it.x < it.r) { it.x = it.r; it.vx = Math.abs(it.vx) * .5; }
+    if (it.x > W - it.r) { it.x = W - it.r; it.vx = -Math.abs(it.vx) * .5; }
+    if (it.y < it.r) { it.y = it.r; it.vy = Math.abs(it.vy) * .5; }
+    if (it.y > H - it.r) { it.y = H - it.r; it.vy = -Math.abs(it.vy) * .5; }
+    it.el.style.transform = `translate(${it.x}px,${it.y}px) rotate(${it.rot}deg)${it === held ? ' scale(1.18)' : ''}`;
+  }
+  tickBugs();
+  requestAnimationFrame(tick);
+}
+
+function pointerPos(e){
+  const r = floor.getBoundingClientRect();
+  return { x: e.clientX - r.left, y: e.clientY - r.top };
+}
+function pickAt(p){
+  for (const it of [...state.items]) {
+    if (Math.hypot(it.x - p.x, it.y - p.y) < it.r * 1.1) {
+      state.items = state.items.filter(x => x !== it);
+      it.el.classList.add('gone');
+      setTimeout(() => it.el.remove(), 460);
+    }
+  }
+  if (!state.items.length) setHint();
+}
+function itemAt(p){
+  for (let i = state.items.length - 1; i >= 0; i--) {
+    const it = state.items[i];
+    if (Math.hypot(it.x - p.x, it.y - p.y) < it.r * 1.15) return it;
+  }
+  return null;
+}
+box.addEventListener('pointermove', e => {
+  if (!state.open) return;
+  const p = pointerPos(e);
+  const h = state.held;
+  if (h) { h.tx = p.x - h.ox; h.ty = p.y - h.oy; }
+  else if (state.mode === 'pick' && state.pressing) pickAt(p);
+});
+box.addEventListener('pointerdown', e => {
+  if (!state.open) return;
+  state.pressing = true;
+  const p = pointerPos(e);
+  if (state.mode === 'move') {
+    const it = itemAt(p);
+    if (!it) return;
+    state.held = it;
+    it.ox = p.x - it.x; it.oy = p.y - it.y; it.tx = it.x; it.ty = it.y;
+    it.el.classList.add('held');
+    floor.append(it.el);
+    state.items = state.items.filter(x => x !== it).concat(it);
+    box.setPointerCapture(e.pointerId);
+  } else pickAt(p);
+});
+const release = () => {
+  state.pressing = false;
+  if (state.held) { state.held.vx *= .5; state.held.vy *= .5; state.held.el.classList.remove('held'); state.held = null; }
+};
+box.addEventListener('pointerup', release);
+box.addEventListener('pointercancel', release);
+box.addEventListener('pointerleave', () => { if (!state.held) state.pressing = false; });
+
+function setHint(){
+  if (!state.open) hint.textContent = 'Tap the box to open it';
+  else if (!state.items.length) hint.textContent = 'All unwrapped. Wrap it again to start over.';
+  else if (state.mode === 'move') hint.textContent = 'Drag the gifts around the box';
+  else hint.textContent = 'Tap or swipe a gift to take it out';
+}
+
+lid.addEventListener('click', () => {
+  if (state.open) return;
+  state.open = true;
+  box.classList.remove('closed', 'closing');
+  box.classList.add('open');
+  lid.setAttribute('aria-hidden', 'true');
+  if (!reduce) setTimeout(releaseBugs, 1600);
+  setTimeout(() => { controls.hidden = false; setHint(); }, reduce ? 300 : 2500);
+});
+
+rewrap.addEventListener('click', () => {
+  state.open = false; state.held = null; state.pressing = false;
+  box.classList.remove('open');
+  box.classList.add('closed', 'closing');
+  lid.removeAttribute('aria-hidden');
+  controls.hidden = true;
+  bugs.forEach(b => b.el.remove()); bugs = [];
+  fill(); setHint();
+  lid.focus({ preventScroll: true });
+});
+
+document.querySelectorAll('.modes button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.mode = btn.dataset.mode;
+    document.querySelectorAll('.modes button').forEach(b =>
+      b.setAttribute('aria-checked', b === btn ? 'true' : 'false'));
+    setHint();
+  });
+});
+
+function releaseBugs(){
+  const r = box.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  BUGS.forEach((def, i) => {
+    const kind = def.kind;
+    const el = document.createElement('div');
+    el.className = 'bug ' + kind;
+    const span = document.createElement('span');
+    putArt(span, def);
+    el.append(span);
+    el.style.opacity = 0;
+    sky.append(el);
+    const ang = (i / BUGS.length) * Math.PI * 2 + rand(-.35, .35);
+    const spd = kind === 'worm' ? rand(.8, 1.1) : rand(1.3, 2.1);
+    bugs.push({
+      el, kind, spd, age: -i * 4,
+      x: cx + rand(-.2, .2) * r.width, y: cy + rand(-.2, .2) * r.height,
+      vx: Math.cos(ang) * spd, vy: Math.sin(ang) * spd,
+      wob: rand(.03, .07), amp: kind === 'butterfly' ? 3 : kind === 'bee' ? 1.6 : .8,
+      turn: rand(-.012, .012)
+    });
+  });
+}
+function tickBugs(){
+  if (!bugs.length) return;
+  const vw = innerWidth, vh = innerHeight;
+  bugs = bugs.filter(b => {
+    b.age++;
+    if (b.age < 0) return true;
+    // gentle curving flight
+    const c = Math.cos(b.turn), s = Math.sin(b.turn);
+    [b.vx, b.vy] = [b.vx * c - b.vy * s, b.vx * s + b.vy * c];
+    const px = -b.vy / b.spd, py = b.vx / b.spd, w = Math.sin(b.age * b.wob) * b.amp;
+    b.x += b.vx + px * w; b.y += b.vy + py * w;
+    const scale = Math.min(1.15, .3 + b.age / 60);   // rises up out of the box
+    b.el.style.opacity = Math.min(1, b.age / 15);
+    b.el.style.transform = `translate(${b.x - 20}px,${b.y - 20}px) scale(${scale})`;
+    const out = b.x < -80 || b.x > vw + 80 || b.y < -80 || b.y > vh + 80;
+    if (out) b.el.remove();
+    return !out;
+  });
+}
+
+// drifting dust motes in the lamplight
+const motes = document.getElementById('motes');
+for (let i = 0; i < 16; i++) {
+  const m = document.createElement('span');
+  m.className = 'mote';
+  const t = rand(14, 26);
+  m.style.cssText = `left:${rand(10, 90)}%;top:${rand(35, 100)}%;--d:${rand(2, 5)}px;--t:${t}s;--delay:${-rand(0, t)}s;--dx:${rand(-6, 6)}vw`;
+  motes.append(m);
+}
+
+addEventListener('resize', measure);
+fill();
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>

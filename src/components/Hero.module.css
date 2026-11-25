@@ -61,7 +61,7 @@
 .caption {
     font-family: var(--font-label);
     font-size: 13px;
-    color: #4a1826;
+    color: #45162a;
     text-align: center;
     padding: 14px 4px 16px;
 }
@@ -73,7 +73,7 @@
     z-index: 2;
     padding: 8px 14px;
     background: var(--accent);
-    color: #3a121d;
+    color: var(--on-accent);
     font-family: var(--font-label);
     font-size: 13px;
     font-weight: 500;

@@ -4,7 +4,7 @@
     width: 110vw;
     margin: clamp(56px, 8vw, 88px) 0 0 -5vw;
     background: var(--accent);
-    color: #3a121d;
+    color: var(--on-accent);
     transform: rotate(-1.5deg);
     overflow: hidden;
     padding: 14px 0;
