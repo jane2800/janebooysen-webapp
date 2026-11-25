@@ -159,11 +159,6 @@ p {
   border-color: var(--text);
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
 .btn--outline:hover {
   border-color: var(--action);
   color: var(--action);
@@ -201,11 +196,6 @@ p {
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
 }
 
 .text-link {

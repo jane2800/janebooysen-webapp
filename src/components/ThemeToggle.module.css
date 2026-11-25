@@ -21,7 +21,6 @@
 
 .toggle:hover {
     background: var(--surface);
-    transform: translateY(-1px);
 }
 
 /* swatch previews the theme you'd switch to */

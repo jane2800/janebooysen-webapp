@@ -27,7 +27,7 @@ export default function Hero() {
                 <figure className={styles.polaroid}>
                     <img
                         src={photo}
-                        alt="Jané smiling, with long brown hair and a striped top, against a light grey wall"
+                        alt="Jané in sunglasses and a purple top, grinning and gesturing towards a white marble fountain with statues in a sunny palace garden"
                         width="760"
                         height="945"
                     />
