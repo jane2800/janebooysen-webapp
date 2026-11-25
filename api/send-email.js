@@ -1,5 +1,6 @@
 // Vercel serverless function: POST /api/send-email
-// Needs EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID and EMAILJS_PUBLIC_KEY in Vercel's environment variables.
+// Needs EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID and EMAILJS_PUBLIC_KEY in Vercel's environment variables,
+// plus EMAILJS_PRIVATE_KEY if "Use Private Key" is turned on in EmailJS.
 module.exports = async (req, res) => {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method Not Allowed" });
@@ -26,6 +27,8 @@ module.exports = async (req, res) => {
       service_id: process.env.EMAILJS_SERVICE_ID,
       template_id: process.env.EMAILJS_TEMPLATE_ID,
       user_id: process.env.EMAILJS_PUBLIC_KEY,
+      // Only sent if set; required when "Use Private Key" (strict mode) is on in EmailJS
+      ...(process.env.EMAILJS_PRIVATE_KEY && { accessToken: process.env.EMAILJS_PRIVATE_KEY }),
       template_params: { user_email, subject, message },
     }),
   });
