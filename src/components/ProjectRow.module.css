@@ -55,6 +55,32 @@
     color: var(--text);
 }
 
+/* Capability label sits tight above the title, so the pair reads as one heading */
+.heading {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.capability {
+    margin: 0;
+}
+
+/* Outline pill, so it reads quieter than the filled "Building" pill */
+.status {
+    align-self: flex-start;
+    margin: 0 0 4px;
+    font-family: var(--font-label);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1.5px solid var(--line);
+    color: var(--muted);
+}
+
 .description {
     color: var(--muted);
     max-width: 42ch;

@@ -1,4 +1,5 @@
 import styles from "./ProjectRow.module.css";
+import Description from "./Description";
 import phone from "./iphone.module.css";
 import browser from "./computer.module.css";
 
@@ -27,16 +28,20 @@ function Visual({ visual }) {
 }
 
 function Details({ project, number }) {
-    const { title, description, tags = [], liveUrl, caseStudyUrl } = project;
+    const { title, capability, status, description, tags = [], liveUrl, repoUrl } = project;
     return (
         <div className={styles.text}>
             <span className={styles.number} aria-hidden="true">
                 {number}
             </span>
-            <h3 className={styles.title}>{title}</h3>
-            <p className={styles.description}>{description}</p>
+            <div className={styles.heading}>
+                {status && <p className={styles.status}>{status}</p>}
+                {capability && <p className={`eyebrow ${styles.capability}`}>{capability}</p>}
+                <h3 className={styles.title}>{title}</h3>
+            </div>
+            <Description text={description} className={styles.description} />
             {tags.length > 0 && (
-                <ul className="tag-list" aria-label="Built with">
+                <ul className="tag-list" aria-label="Skills and tools">
                     {tags.map((t) => (
                         <li key={t} className="tag">
                             {t}
@@ -44,7 +49,7 @@ function Details({ project, number }) {
                     ))}
                 </ul>
             )}
-            {(liveUrl || caseStudyUrl) && (
+            {(liveUrl || repoUrl) && (
                 <div className="btn-row">
                     {liveUrl && (
                         <a className="btn btn--filled btn--sm" href={liveUrl} target="_blank" rel="noopener noreferrer">
@@ -52,10 +57,10 @@ function Details({ project, number }) {
                             <span className="visually-hidden">: {title} (opens in a new tab)</span>
                         </a>
                     )}
-                    {caseStudyUrl && (
-                        <a className="btn btn--outline btn--sm" href={caseStudyUrl}>
-                            Case study <span aria-hidden="true">→</span>
-                            <span className="visually-hidden">: {title}</span>
+                    {repoUrl && (
+                        <a className="btn btn--outline btn--sm" href={repoUrl} target="_blank" rel="noopener noreferrer">
+                            GitHub <span aria-hidden="true">↗</span>
+                            <span className="visually-hidden">: {title} source code (opens in a new tab)</span>
                         </a>
                     )}
                 </div>

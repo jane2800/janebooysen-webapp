@@ -19,7 +19,7 @@ export default function Ticker() {
     );
 
     return (
-        <div className={styles.band} role="region" aria-label="Things I love">
+        <div className={styles.band} role="region" aria-label="What I work on">
             <div className={styles.track}>
                 {run(false)}
                 {run(true)}

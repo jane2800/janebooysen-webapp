@@ -10,11 +10,16 @@ export default function Work() {
         <section id="work" className="section" aria-labelledby="work-title">
             <div className="container">
                 <div className={styles.head}>
-                    <h2 id="work-title" className="section-title">
-                        Things I’ve made
-                    </h2>
+                    <div>
+                        <h2 id="work-title" className="section-title">
+                            Things I’ve made
+                        </h2>
+                        <p className={styles.subtitle}>
+                            Selected work across product, technology and creative problem-solving.
+                        </p>
+                    </div>
                     <p className={styles.count}>
-                        {pad(shipped.length)} shipped · {pad(inProgress.length)} brewing
+                        {pad(shipped.filter((p) => !p.status).length)} shipped · {pad(inProgress.length)} brewing
                     </p>
                 </div>
 

@@ -1,0 +1,23 @@
+.bullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bullets li {
+    position: relative;
+    padding-left: 1.4em;
+}
+
+/* Same ✦ as the ticker, so the bullets feel like part of the site */
+.bullets li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8em;
+    line-height: 1.9;
+}

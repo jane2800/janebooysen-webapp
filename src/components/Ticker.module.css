@@ -14,7 +14,7 @@
 .track {
     display: flex;
     width: max-content;
-    animation: scroll 38s linear infinite;
+    animation: scroll 85s linear infinite; /* scale with ticker length so the speed stays readable */
 }
 
 .band:hover .track {

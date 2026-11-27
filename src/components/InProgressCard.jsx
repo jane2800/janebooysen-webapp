@@ -1,4 +1,5 @@
 import styles from "./InProgressCard.module.css";
+import Description from "./Description";
 
 const ICONS = { done: "✓", now: "◐", next: "○" };
 const STATUS_TEXT = { done: "Done", now: "In progress", next: "Up next" };
@@ -13,23 +14,24 @@ function formatSince(since) {
 }
 
 export default function InProgressCard({ project }) {
-    const { title, since, description, tags = [], followUrl, steps = [] } = project;
+    const { title, capability, since, description, tags = [], followUrl, steps = [] } = project;
 
     const total = steps.length;
     const done = steps.filter((s) => s.status === "done").length;
     const percent = total ? Math.round((done / total) * 100) : 0;
 
     return (
-        <article className={`${styles.card} lift`}>
+        <article className={`${styles.card} ${total ? "" : styles.noSteps} lift`}>
             <div className={styles.info}>
                 <p className={styles.meta}>
                     <span className={styles.pill}>Building</span>
                     {since && <span className={styles.since}>since {formatSince(since)}</span>}
                 </p>
+                {capability && <p className={`eyebrow ${styles.capability}`}>{capability}</p>}
                 <h4 className={styles.title}>{title}</h4>
-                <p className={styles.description}>{description}</p>
+                <Description text={description} className={styles.description} />
                 {tags.length > 0 && (
-                    <ul className="tag-list" aria-label="Built with">
+                    <ul className="tag-list" aria-label="Skills and tools">
                         {tags.map((t, i) => (
                             <li key={`${t}-${i}`} className="tag">
                                 {t}

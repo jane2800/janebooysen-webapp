@@ -8,13 +8,20 @@ const cvData = {
     { label: "Branding", text: "Al Catzone, a vegan pizzeria in Berlin" },
   ],
 
+  // Every 2-3 real skills there's a joke, styled identically on purpose.
   ticker: [
-    "User-friendly design",
     "Product thinking",
-    "Brand identity",
+    "User journeys",
+    "Asking “but why?” one more time",
+    "Requirements & user stories",
+    "Agile / Scrum",
+    "Closing 40 browser tabs",
+    "Node.js & React",
     "Figma",
+    "Naming things",
+    "Brand identity",
     "Fixing messy processes",
-    "Great coffee",
+    "Finding the meeting that could’ve been a Slack message",
   ],
 
   // Newest first.
@@ -24,7 +31,7 @@ const cvData = {
       company: "Honest & Rare",
       year: "Oct 2026 – now",
       summary:
-        "Mapping how customers, vendors and the team move through the platform, improving key journeys like browsing, checkout and vendor processes, and building a Node.js “strangler-fig” migration that replaces the legacy system without disrupting live operations.",
+        "Taking the hackathon prototype further: mapping how customers, vendors and the team move through the platform, improving key journeys like browsing, checkout and vendor processes, exploring where AI could help, and rebuilding the platform on modern technologies with our own architecture.",
     },
     {
       position: "Hospitality & Brand Development",

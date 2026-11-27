@@ -8,6 +8,15 @@
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* No milestones to show → let the text use the full width */
+.noSteps {
+    grid-template-columns: 1fr;
+}
+
+.capability {
+    margin: 0 0 -8px;
+}
+
 .info {
     display: flex;
     flex-direction: column;

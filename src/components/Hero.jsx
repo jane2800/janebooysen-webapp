@@ -6,12 +6,13 @@ export default function Hero() {
     return (
         <section className={`container ${styles.hero}`} aria-labelledby="hero-name">
             <div className={styles.text}>
-                <p className="eyebrow">Portfolio · Berlin, DE</p>
+                <p className="eyebrow">Tech, product &amp; delivery · Berlin, DE</p>
                 <h1 id="hero-name" className={styles.name}>
                     <ScrambleText text="Jané Booysen" onMount splitWords wordClassName={styles.word} />
                 </h1>
                 <p className={styles.lede}>
-                    I build friendly digital experiences, find where processes break down, and still make great coffee.
+                    I studied Software Engineering, so I know how things get built. What I enjoy most is working out
+                    what's worth building, and keeping it moving until it's real.
                 </p>
                 <div className="btn-row">
                     <a href="#work" className="btn btn--filled">
@@ -31,7 +32,7 @@ export default function Hero() {
                         width="760"
                         height="945"
                     />
-                    <figcaption className={styles.caption}>fig. 1: Jané, probably thinking about coffee</figcaption>
+                    <figcaption className={styles.caption}>fig. 1: Jané, presenting the fountain like it's a product demo</figcaption>
                 </figure>
                 <p className={styles.sticker}>
                     <span aria-hidden="true">● </span>Open to work
