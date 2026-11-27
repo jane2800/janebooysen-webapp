@@ -13,7 +13,7 @@ test("renders the main sections", () => {
     render(<HomePage />);
     expect(screen.getByRole("heading", { level: 1, name: /jané booysen/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /things i’ve made/i })).toBeInTheDocument();
-    expect(screen.getByRole("img", { name: "German: 3 out of 6 stars" })).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "German: B1, 3 out of 6 stars" })).toBeInTheDocument();
 });
 
 test("progress is calculated from the steps", () => {

@@ -58,13 +58,6 @@ export const shipped = [
     caseStudyUrl: "",
     // no visual → shown as a text-only card
   },
-  {
-    title: "JetBrains Kotlin Website",
-    description: "A test project migrating the Kotlin website to React Router 7 framework mode.",
-    tags: ["Kotlin", "React Router 7", "Gradle"],
-    liveUrl: "",
-    caseStudyUrl: "",
-  },
 ];
 
 //  IN PROGRESS ("In the works")

@@ -17,13 +17,13 @@ export default function Languages() {
                             <div className={styles.head}>
                                 <span className={styles.name}>{lang.name}</span>
                                 <span className={styles.score} aria-hidden="true">
-                                    {lang.level}/{MAX}
+                                    {lang.label}
                                 </span>
                             </div>
                             <div
                                 className={styles.stars}
                                 role="img"
-                                aria-label={`${lang.name}: ${lang.level} out of ${MAX} stars`}
+                                aria-label={`${lang.name}: ${lang.label}, ${lang.level} out of ${MAX} stars`}
                             >
                                 {Array.from({ length: MAX }, (_, i) =>
                                     i < lang.level ? <BsStarFill key={i} /> : <BsStar key={i} />

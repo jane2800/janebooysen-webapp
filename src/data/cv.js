@@ -83,9 +83,9 @@ const cvData = {
     "Hello! I'm Jané, a third-year Software Engineering student at the University of Europe for Applied Sciences in Berlin. I build with JavaScript, React, Node.js and PostgreSQL, and use AI tools like Claude Code and Cursor in my everyday work. What I enjoy most is the product side: understanding how people actually work, finding where a process breaks down, and deciding what's worth building next. Right now I'm helping modernise Honest & Rare's website, and leading the brand and digital presence of Al Catzone, a vegan pizzeria in Berlin.",
 
   languages: [
-    { name: "Afrikaans", level: 6 },
-    { name: "English", level: 6 },
-    { name: "German", level: 3 },
+    { name: "Afrikaans", level: 6, label: "Native" },
+    { name: "English", level: 6, label: "Native" },
+    { name: "German", level: 3, label: "B1" },
   ],
 
   links: {
